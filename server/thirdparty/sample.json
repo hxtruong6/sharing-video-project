@@ -1,0 +1,148 @@
+[
+	{
+		"createdDate": "2020-04-11T20:44:03.2070000",
+		"id": 3816699,
+		"retailerId": 658959,
+		"code": "SP001005",
+		"name": "(Hàng Thử nghiệm của Hãng )CPU i7 6700 (3.4Ghz, 4C8T) LGA1151 ES BH theo tem",
+		"fullName": "(Hàng Thử nghiệm của Hãng )CPU i7 6700 (3.4Ghz, 4C8T) LGA1151 ES BH theo tem (Cái)",
+		"categoryId": 186008,
+		"categoryName": "Thế hệ 06",
+		"allowsSale": true,
+		"type": 2,
+		"hasVariants": false,
+		"basePrice": 3300000,
+		"weight": 0,
+		"unit": "Cái",
+		"conversionValue": 1,
+		"description": "",
+		"modifiedDate": "2022-05-12T15:11:29.8570000",
+		"isActive": true,
+		"isLotSerialControl": true,
+		"isBatchExpireControl": false,
+		"inventories": [
+			{
+				"productId": 3816699,
+				"productCode": "SP001005",
+				"productName": "(Hàng Thử nghiệm của Hãng )CPU i7 6700 (3.4Ghz, 4C8T) LGA1151 ES BH theo tem",
+				"branchId": 25152,
+				"branchName": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ HÙNG",
+				"cost": 3000000,
+				"onHand": 0,
+				"reserved": 0,
+				"actualReserved": 0,
+				"minQuantity": 0,
+				"maxQuantity": 0,
+				"isActive": true
+			}
+		],
+		"priceBooks": [
+			{
+				"productId": 3816699,
+				"priceBookId": 1231583,
+				"priceBookName": "Giá thương mại điện tử",
+				"price": 3450000,
+				"isActive": true,
+				"startDate": "2022-05-12T10:03:00.4770000",
+				"endDate": "2023-05-31T10:03:00.4770000"
+			},
+			{
+				"productId": 3816699,
+				"priceBookId": 1231584,
+				"priceBookName": "Giá thương mại điện tử 2",
+				"price": 3480000,
+				"isActive": true,
+				"startDate": "2022-05-12T10:17:25.6900000",
+				"endDate": "2023-05-31T10:17:25.6900000"
+			},
+			{
+				"productId": 3816699,
+				"priceBookId": 1232177,
+				"priceBookName": "Giá Sĩ",
+				"price": 3150000,
+				"isActive": false,
+				"startDate": "2022-08-09T11:30:48.5670000",
+				"endDate": "2023-08-09T11:30:48.5670000"
+			}
+		],
+		"images": [
+			"https://cdn-images.kiotviet.vn/vitinhhungdunghcm/a3d6d9b794c14d899927a54898b87b7a.jpg"
+		]
+	},
+	{
+		"createdDate": "2020-04-11T20:44:03.2400000",
+		"id": 3816461,
+		"retailerId": 658959,
+		"code": "SP001243",
+		"barCode": "",
+		"name": "ACER Q77 1155 4 KHE RAM",
+		"fullName": "ACER Q77 1155 4 KHE RAM (Cái)",
+		"categoryId": 185990,
+		"categoryName": "Main ( Bo mạch chủ)",
+		"allowsSale": true,
+		"type": 2,
+		"hasVariants": false,
+		"basePrice": 0,
+		"weight": 0,
+		"unit": "Cái",
+		"conversionValue": 1,
+		"modifiedDate": "2021-07-28T13:34:38.4500000",
+		"isActive": false,
+		"isLotSerialControl": false,
+		"isBatchExpireControl": false,
+		"inventories": [
+			{
+				"productId": 3816461,
+				"productCode": "SP001243",
+				"productName": "ACER Q77 1155 4 KHE RAM",
+				"branchId": 25152,
+				"branchName": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ HÙNG",
+				"cost": 650000,
+				"onHand": 0,
+				"reserved": 0,
+				"actualReserved": 0,
+				"minQuantity": 0,
+				"maxQuantity": 0,
+				"isActive": false
+			}
+		]
+	},
+	{
+		"createdDate": "2020-04-11T20:44:03.2400000",
+		"id": 3816462,
+		"retailerId": 658959,
+		"code": "SP001242",
+		"barCode": "",
+		"name": "ADAPTER MSATA",
+		"fullName": "ADAPTER MSATA (Cái)",
+		"categoryId": 185980,
+		"categoryName": "Linh tinh khác",
+		"allowsSale": true,
+		"type": 2,
+		"hasVariants": false,
+		"basePrice": 0,
+		"weight": 0,
+		"unit": "Cái",
+		"conversionValue": 1,
+		"modifiedDate": "2021-07-01T11:36:19.9470000",
+		"isActive": false,
+		"isLotSerialControl": false,
+		"isBatchExpireControl": false,
+		"inventories": [
+			{
+				"productId": 3816462,
+				"productCode": "SP001242",
+				"productName": "ADAPTER MSATA",
+				"branchId": 25152,
+				"branchName": "CÔNG TY TNHH GIẢI PHÁP CÔNG NGHỆ HÙNG",
+				"cost": 80000,
+				"onHand": 0,
+				"reserved": 0,
+				"actualReserved": 0,
+				"minQuantity": 0,
+				"maxQuantity": 0,
+				"isActive": false
+			}
+		]
+	}
+]
