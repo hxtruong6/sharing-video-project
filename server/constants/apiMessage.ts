@@ -35,16 +35,6 @@ class AuthMessage {
 	public TOKEN_EXPIRE: string = 'Token is expired';
 }
 
-class ProductMessage {
-	public MISSING_PRODUCT_CATEGORY_ID: string = 'Missing product or category ID';
-
-	public MISSING_SPEC_TYPE_ID: string = 'Missing product or specType ID';
-}
-
-class MenuMessage extends CommonMessage {
-	// public DELETE_FAILED: string = 'Delete menu failed';
-}
-
 class UserMessage extends CommonMessage {
 	public WRONG_PASSWORD: string = 'Wrong password';
 
@@ -55,41 +45,18 @@ class UserMessage extends CommonMessage {
 	public EXIST_EMAIL: string = 'Exist email. Try with other email';
 }
 
-class SpecTypeMessage extends CommonMessage {
-	public MISSING_ID_IN_GET_WITH_PARTS: string = 'Missing id when call api get part of spec type';
-}
-
-class SpecPartMessage extends CommonMessage {
-	public MISSING_SPEC_TYPE_ID: string = 'Missing spec type id';
-}
-
-class SpecValueMessage {
-	public MISSING_PRODUCT_ID: string = 'Missing product id';
-}
-
 const ApiMessage = new CommonMessage();
-const ProductApiMessage = new ProductMessage();
-const MenuApiMessage = new MenuMessage();
+
 const UserApiMessage = new UserMessage();
 const AuthApiMessage = new AuthMessage();
 
 class ApiMessages {
 	Common = new CommonMessage();
 
-	Product = new ProductMessage();
-
-	Menu = new MenuMessage();
-
 	User = new UserMessage();
 
 	Auth = new AuthMessage();
-
-	SpecType = new SpecTypeMessage();
-
-	SpecPart = new SpecPartMessage();
-
-	SpecValue = new SpecValueMessage();
 }
 
-export { ApiMessage, ProductApiMessage, MenuApiMessage, UserApiMessage, AuthApiMessage };
+export { ApiMessage, UserApiMessage, AuthApiMessage };
 export default new ApiMessages();

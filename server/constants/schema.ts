@@ -3,7 +3,7 @@ const Tables = {
 	userLog: 'user_log',
 
 	video: 'video',
-	videoUser: 'videoUser',
+	videoUser: 'video_user',
 };
 
 const BaseModel = {
@@ -37,6 +37,8 @@ const VideoTable = {
 const VideoUserTable = {
 	...BaseModel,
 
+	userId: 'user_id',
+	videoId: 'video_id',
 	like: 'like',
 	isPublic: 'is_public'
 };

@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { ApiMessage } from '../constants/apiMessage';
 import videoService from '../services/video.service';
+import videoUserService from '../services/videoUser.service';
 import { assertIRequest } from '../utils/commonFuncs';
 import { convertCamelKeys } from '../utils/converts';
 import { errorRes, failRes, successRes } from '../utils/standardResponse';
@@ -15,54 +16,39 @@ class VideoController {
 		}
 	}
 
-	// async get(req: Request, res: Response) {
-	// 	try {
-	// 		const { slug } = req.params;
-	// 		if (!slug) {
-	// 			return failRes(res, { message: ApiMessage.BAD_REQUEST });
-	// 		}
+	async getByUserId(req: Request, res: Response) {
+		try {
+			assertIRequest(req);
+			const data = await videoUserService.getByUserId(req.userId);
 
-	// 		const data = await videoService.getBySlug(slug);
-	// 		if (!data) {
-	// 			return failRes(res, { message: ApiMessage.NOT_FOUND });
-	// 		}
-	// 		return successRes(res, convertCamelKeys(data));
-	// 	} catch (error) {
-	// 		return errorRes(res, error);
-	// 	}
-	// }
+			if (!data) {
+				return failRes(res, { message: ApiMessage.NOT_FOUND });
+			}
+			return successRes(res, convertCamelKeys(data));
+		} catch (error) {
+			return errorRes(res, error);
+		}
+	}
 
-	// async getPl(req: Request, res: Response) {
-	// 	try {
-	// 		const { slug } = req.params;
-	// 		if (!slug) {
-	// 			return failRes(res, { message: ApiMessage.BAD_REQUEST });
-	// 		}
+	async create(req: Request, res: Response) {
+		try {
+			assertIRequest(req);
+			const params = req.body;
+			if (!params?.url) {
+				return failRes(res, { message: ApiMessage.MISSING_URL });
+			}
 
-	// 		const data = await videoService.getBySlug(slug, true);
-	// 		if (!data) {
-	// 			return failRes(res, { message: ApiMessage.NOT_FOUND });
-	// 		}
-	// 		return successRes(res, convertCamelKeys(data));
-	// 	} catch (error) {
-	// 		return errorRes(res, error);
-	// 	}
-	// }
+			const data = await videoService.create(params, req.userId);
+			await videoUserService.create({ videoId: data?.id, userId: req.userId });
 
-	// async create(req: Request, res: Response) {
-	// 	try {
-	// 		assertIRequest(req);
-	// 		const params = req.body;
-
-	// 		const data = await videoService.create(params, req.userId);
-	// 		if (!data) {
-	// 			return failRes(res, { message: ApiMessage.CREATE_FAILED });
-	// 		}
-	// 		return successRes(res, convertCamelKeys(data));
-	// 	} catch (error) {
-	// 		return errorRes(res, error);
-	// 	}
-	// }
+			if (!data) {
+				return failRes(res, { message: ApiMessage.CREATE_FAILED });
+			}
+			return successRes(res, convertCamelKeys(data));
+		} catch (error) {
+			return errorRes(res, error);
+		}
+	}
 
 	// async update(req: Request, res: Response) {
 	// 	try {

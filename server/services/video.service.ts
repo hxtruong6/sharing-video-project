@@ -16,7 +16,7 @@ class VideoService {
 		const data = await db
 			.from(Tables.video)
 			.insert(
-				convertSnakeKeys({ ...video, slug: toUrlString(video?.name), createdBy: userId })
+				convertSnakeKeys({ ...video, createdBy: userId })
 			)
 			.returning('*');
 		return data?.[0];

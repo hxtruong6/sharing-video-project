@@ -9,8 +9,7 @@ content-type: application/json
 
 {
     "email": "admin@gmail.com",
-    "password": "admin",
-    "userType": "vendor"
+    "password": "admin"
 }
 
 ###

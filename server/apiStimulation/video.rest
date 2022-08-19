@@ -1,0 +1,34 @@
+@userUrl = http://localhost:8084/api/user
+
+@baseUrl = http://localhost:8084/api/video
+
+@id1 = 22fd3723-3198-4f6f-9aa5-87eaee1bddc9
+
+@id2 = 348f77de-af07-4dfc-b063-3a5c9e883e7f
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE2NjA4OTk1NzEsImV4cCI6MTY2MDk4NTk3MX0.wKcYAehFLxOdWWT_PwYbMgoS-pblO1Dzdpot5plOFdA
+
+###
+# POST {{userUrl}}/register HTTP/1.1
+
+POST {{userUrl}}/login HTTP/1.1
+content-type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "admin"
+}
+###
+GET {{baseUrl}}/ HTTP/1.1
+Authorization: Bearer {{token}}
+
+
+###
+POST {{baseUrl}} HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Be there {{$guid}}",
+    "url": "https://www.youtube.com/watch?v=b4eBeVC9i0I__TEST__{{$guid}}"
+}
