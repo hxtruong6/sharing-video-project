@@ -12,8 +12,8 @@ videoRouter
 // Other router need to check authentication user
 	.all('/*', authMiddleware)
 	.get('/list', videoController.getByUserId)
-	.post('/', videoController.create);
-// .put('/', videoController.update);
+	.post('/', videoController.create)
+	.put('/', videoController.update);
 // .delete('/:id', videoController.remove)
 
 export default videoRouter;

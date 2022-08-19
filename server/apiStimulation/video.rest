@@ -2,7 +2,7 @@
 
 @baseUrl = http://localhost:8084/api/video
 
-@id1 = 22fd3723-3198-4f6f-9aa5-87eaee1bddc9
+@id1 = 1
 
 @id2 = 348f77de-af07-4dfc-b063-3a5c9e883e7f
 
@@ -36,3 +36,24 @@ Authorization: Bearer {{token}}
 ###
 GET {{baseUrl}}/list HTTP/1.1
 Authorization: Bearer {{token}}
+
+
+### Update like of Video
+PUT {{baseUrl}} HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "{{id1}}",
+    "likeAdd": 10
+}
+
+### Update status of Video
+PUT {{baseUrl}} HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "{{id1}}",
+    "isPublic": true
+}

@@ -10,6 +10,8 @@ class CommonMessage {
 
 	public MISSING_NAME: string = 'Missing Name in request';
 
+	public MISSING_FIELD: string = 'Missing some attributes in request';
+
 	public MISSING_URL: string = 'Missing URL in request';
 
 	public INVALID_ID: string = 'Invalid ID';

@@ -50,22 +50,30 @@ class VideoController {
 		}
 	}
 
-	// async update(req: Request, res: Response) {
-	// 	try {
-	// 		assertIRequest(req);
-	// 		const params = req.body;
-	// 		if (!params || (!params.id && !params.slug)) {
-	// 			return failRes(res, { message: ApiMessage.MISSING_ID });
-	// 		}
+	async update(req: Request, res: Response) {
+		try {
+			assertIRequest(req);
+			const params = req.body;
+			const { likeAdd, isPublic } = params;
 
-	// 		const data = await videoService.update(params, req.userId);
-	// 		if (!data) {
-	// 			return failRes(res, { message: ApiMessage.UPDATE_FAILED });
-	// 		}
-	// 		return successRes(res, convertCamelKeys(data));
-	// 	} catch (error) {
-	// 		return errorRes(res, error);
-	// 	}
-	// }
+			if (!params?.id) {
+				return failRes(res, { message: ApiMessage.MISSING_ID });
+			}
+
+			if (!likeAdd && (isPublic === null || isPublic === undefined)) {
+				return failRes(res, { message: ApiMessage.MISSING_FIELD });
+			}
+
+			// TODO: it can split in to APIs which are like API and toggleIsPublic API.
+
+			const data = await videoUserService.update(params, req.userId);
+			if (!data) {
+				return failRes(res, { message: ApiMessage.UPDATE_FAILED });
+			}
+			return successRes(res, convertCamelKeys(data));
+		} catch (error) {
+			return errorRes(res, error);
+		}
+	}
 }
 export default new VideoController();

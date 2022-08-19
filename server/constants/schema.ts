@@ -21,7 +21,7 @@ const UserTable = {
 	...BaseModel,
 	firstName: 'first_name',
 	fullName: 'full_name',
-	email: 'email',
+	userName: 'user_name',
 	password: 'password',
 
 	playlistUrl: 'playlist_url'

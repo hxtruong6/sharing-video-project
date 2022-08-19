@@ -78,7 +78,7 @@
         -   Change public video or not of requested user
 
                   Header: {authorization}
-                  Input: {like}
+                  Input: {likeAdd (1/-1)} | { isPublic (current public status)}
                   Ouput: **Standard response**
 
 3.  Playlist
