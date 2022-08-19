@@ -32,3 +32,7 @@ Authorization: Bearer {{token}}
     "name": "Be there {{$guid}}",
     "url": "https://www.youtube.com/watch?v=b4eBeVC9i0I__TEST__{{$guid}}"
 }
+
+###
+GET {{baseUrl}}/list HTTP/1.1
+Authorization: Bearer {{token}}

@@ -54,4 +54,19 @@ describe('video integration tests', () => {
 
 		done();
 	});
+
+	it('[GET] Get video by user', async (done) => {
+		expect.hasAssertions();
+
+		const response = await request(app)
+			.get(`${VIDEO_BASE_URL}/list`)
+			.set('Authorization', `Bearer ${token}`)
+			.expect(200);
+
+		expect(response.body.status).toBe(ApiStatus.Success);
+		const data = response.body?.data;
+		expect(data.length).toBeGreaterThanOrEqual(1);
+
+		done();
+	});
 });
