@@ -1,7 +1,6 @@
 import db from '../models';
 import Tables from '../constants/schema';
 import { convertSnakeKeys, convertCamelKeys } from '../utils/converts';
-import fileService from './file.service';
 
 class BannerService {
 	async getAll() {
@@ -9,29 +8,6 @@ class BannerService {
 			.from(Tables.banner)
 			.returning('*')
 			.then((r) => convertCamelKeys(r));
-
-		return banner;
-	}
-
-	async getBySlug(slug: string, hasImage: Boolean = false) {
-		let banner = await db
-			.from(Tables.banner)
-			.where({ slug })
-			.first()
-			.then((r) => convertCamelKeys(r));
-
-		if (hasImage) {
-			const asyncFuncs: any = [];
-			banner?.images?.forEach((img: number) => {
-				if (img) asyncFuncs.push(fileService.getImageById(img));
-				else asyncFuncs.push(null);
-			});
-
-			banner = {
-				...banner,
-				images: await Promise.all(asyncFuncs),
-			};
-		}
 
 		return banner;
 	}
