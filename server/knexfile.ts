@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-import pqConnStr, { createUnixSocketPoolConnection } from './config/db.config';
+import pqConnStr from './config/db.config';
 import envConfig from './config/env.config';
 import Environment from './constants/environment';
 
@@ -14,6 +14,21 @@ const knexConfig: KnexConfig = {
 		// envConfig.ENVIRONMENT === Environment.DEVELOPMENT
 		// 	? pqConnStr
 		// 	: createUnixSocketPoolConnection,
+		pool: {
+			min: 2,
+			max: 10,
+		},
+		migrations: {
+			directory: `${__dirname}/models/migrations`,
+		},
+		seeds: {
+			directory: `${__dirname}/models/seeds`,
+		},
+	},
+
+	test: {
+		client: 'pg',
+		connection: pqConnStr,
 		pool: {
 			min: 2,
 			max: 10,

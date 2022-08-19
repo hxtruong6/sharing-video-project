@@ -1,10 +1,13 @@
 import * as dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
 const { env } = process;
+
 console.log('NODE_ENV: ', env.NODE_ENV);
+
 const envConfig:any = {
+	...env,
 	ENVIRONMENT: env.NODE_ENV,
 	DB_USER_NAME: env.DB_USER_NAME,
 	DB_PASS: env.DB_PASS,
@@ -12,7 +15,6 @@ const envConfig:any = {
 	DB_HOST: env.DB_HOST,
 	DB_PORT: env.DB_PORT,
 	DB_URL_DEV: env.DB_URL_DEV,
-	...env
 };
 
 export default envConfig;

@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { v4 as uuidv4 } from 'uuid';
-import app from '../app';
-import { ApiStatus } from '../constants/apiConstant';
+import app from '../../app';
+import { ApiStatus } from '../../constants/apiConstant';
 
 const BRAND_BASE_URL = '/api/brand';
 

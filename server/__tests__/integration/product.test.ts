@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { v1, v4 } from 'uuid';
-import app from '../app';
-import { ApiStatus } from '../constants/apiConstant';
+import app from '../../app';
+import { ApiStatus } from '../../constants/apiConstant';
 
 const PRODUCT_BASE_URL = '/api/product';
 
