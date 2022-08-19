@@ -22,7 +22,7 @@ exports.up = async (knex: Knex): Promise<void> => {
 			table.string('full_name');
 			table.boolean('is_actived').notNullable().defaultTo(true);
 			table.string('avatar');
-			table.string('playlist_url');
+			table.string('playlist_url').unique();
 
 			table.timestamp('created_at').defaultTo(knex.fn.now());
 			table.timestamp('updated_at');
@@ -69,11 +69,7 @@ exports.up = async (knex: Knex): Promise<void> => {
 		})
 
 		.then(async () => {
-			const updateTables = [
-				'user',
-				'video',
-				'video_user'
-			];
+			const updateTables = ['user', 'video', 'video_user'];
 			const asynsFuncs = Object.keys(updateTables).map(
 				(key: string) => knex.raw(onUpdateTrigger((updateTables as any)[key]))
 				// eslint-disable-next-line function-paren-newline

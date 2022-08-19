@@ -16,7 +16,9 @@ class UserController {
 
 			userName = String(userName).trim();
 
-			const user = await userService.getByUsername(userName);
+			const user = await userService.getByUserName(userName, true);
+			// console.log(user);
+
 			if (user) {
 				const isPasswordMatching = await bcrypt.compare(password, user.password);
 				if (isPasswordMatching) {
@@ -58,13 +60,18 @@ class UserController {
 				return errorRes(res, { message: apiMessage.Common.BAD_REQUEST });
 			}
 
-			const existedUser = await userService.getByUsername(userName);
+			const existedUser = await userService.getByUserName(userName);
 			if (existedUser) {
 				return failRes(res, { message: UserApiMessage.EXIST_USERNAME });
 			}
 			const hashedPassword = await hashPassword(password);
 
-			const userData = { ...req.body, userName, password: hashedPassword, playlistUrl: userName };
+			const userData = {
+				...req.body,
+				userName,
+				password: hashedPassword,
+				playlistUrl: userName,
+			};
 			console.log(userData);
 
 			const user = await userService.create(userData);

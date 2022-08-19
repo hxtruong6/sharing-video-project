@@ -36,7 +36,6 @@ class VideoUserService {
 	async getByPlaylistUrl(url) {
 		const user = await userService.getByPlaylistUrl(url);
 
-		console.log(user);
 		if (!user) return null;
 
 		return db

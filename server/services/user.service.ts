@@ -4,15 +4,19 @@ import { filtered } from '../utils/commonFuncs';
 import { convertCamelKeys, convertSnakeKeys } from '../utils/converts';
 
 class UserService {
-	async getByUsername(userName: string) {
+	async getByUserName(userName: string, requirePassword: Boolean = false) {
 		const data = await db
 			.from(Tables.user)
 			.where({ user_name: userName })
 			.whereNull(UserTable.deletedAt)
 			.then((data: any) => convertCamelKeys(data));
+
 		if (data.length !== 1) {
 			return null;
 		}
+
+		if (requirePassword) return data[0];
+
 		return filtered(data[0], { excepted: ['password'] });
 	}
 

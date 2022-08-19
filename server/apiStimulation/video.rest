@@ -6,8 +6,7 @@
 
 @id2 = 348f77de-af07-4dfc-b063-3a5c9e883e7f
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImlkIjoxLCJpYXQiOjE2NjA4OTk1NzEsImV4cCI6MTY2MDk4NTk3MX0.wKcYAehFLxOdWWT_PwYbMgoS-pblO1Dzdpot5plOFdA
-
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImFkbWluIiwiaWQiOjIsImlhdCI6MTY2MDkyNTkzNCwiZXhwIjoxNjYxMDEyMzM0fQ.b8VAzJo89iqQ3awsAYpPmLIDc3NIJBgB7KcHQe_RUYQ
 ###
 # POST {{userUrl}}/register HTTP/1.1
 
@@ -44,8 +43,8 @@ content-type: application/json
 Authorization: Bearer {{token}}
 
 {
-    "id": "{{id1}}",
-    "likeAdd": 10
+    "id": 6,
+    "likeAdd": -1
 }
 
 ### Update status of Video
@@ -59,5 +58,5 @@ Authorization: Bearer {{token}}
 }
 
 ### Get by playlistUrl
-GET {{baseUrl}}/ HTTP/1.1
-Authorization: Bearer {{token}}
+GET {{baseUrl}}/?playlistUrl=admin HTTP/1.1
+content-type: application/json
