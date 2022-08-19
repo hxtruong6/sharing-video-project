@@ -15,11 +15,11 @@ exports.up = async (knex: Knex): Promise<void> => {
 		.createTable(Tables.user, (table) => {
 			// table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
 			table.increments();
-			table.string('first_name');
-			table.string('full_name');
-			table.string('email').unique();
 			table.string('user_name').unique();
 			table.string('password').notNullable();
+
+			table.string('first_name');
+			table.string('full_name');
 			table.boolean('is_actived').notNullable().defaultTo(true);
 			table.string('avatar');
 			table.string('playlist_url');

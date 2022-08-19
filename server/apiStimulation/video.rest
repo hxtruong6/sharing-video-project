@@ -15,7 +15,7 @@ POST {{userUrl}}/login HTTP/1.1
 content-type: application/json
 
 {
-    "email": "admin@gmail.com",
+    "userName": "admin",
     "password": "admin"
 }
 ###

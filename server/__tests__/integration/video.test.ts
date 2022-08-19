@@ -6,7 +6,7 @@ import { ApiStatus } from '../../constants/apiConstant';
 import { timestamp, USER_BASE_URL, VIDEO_BASE_URL } from './constants';
 
 let user: any = {
-	email: `inte_test_user_${new Date().getTime()}__video@gmail.com`,
+	userName: `inte_test_user_${new Date().getTime()}__video`,
 	password: 'pass_123',
 };
 let token;

@@ -4,8 +4,7 @@ import { errorRes } from '../utils/standardResponse';
 import { UPLOAD_FILE_TYPE } from '../constants/constants';
 
 const userValidationRules = () => [
-	// username must be an email
-	body('username').isEmail(),
+	body('username').isString(),
 	// password must be at least 5 chars long
 	body('password').isLength({ min: 5 }),
 ];

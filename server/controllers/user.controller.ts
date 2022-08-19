@@ -8,28 +8,15 @@ import userService from '../services/user.service';
 import { copyObject, hashPassword } from '../utils/commonFuncs';
 import { errorRes, failRes, successRes } from '../utils/standardResponse';
 
-function emailIsValid(email: string) {
-	return /\S+@\S+\.\S+/.test(email);
-}
-
-function normalizeEmail(email: string) {
-	return email.trim().toLowerCase();
-}
-
 class UserController {
 	async login(req: Request, res: Response) {
 		try {
-			let { email } = req.body;
+			let { userName } = req.body;
 			const { password } = req.body;
-			console.log('xxx 104 user: ', req.body);
 
-			if (!emailIsValid(email)) {
-				return errorRes(res, apiMessage.Common.INVALID_REQUEST);
-			}
+			userName = String(userName).trim();
 
-			email = normalizeEmail(email);
-
-			const user = await userService.getByEmail(email);
+			const user = await userService.getByUsername(userName);
 			if (user) {
 				const isPasswordMatching = await bcrypt.compare(password, user.password);
 				if (isPasswordMatching) {
@@ -38,7 +25,7 @@ class UserController {
 					// TODO: add role later in jwt.sign
 					const accessTokenSecret: any = process.env.JWT_SECRET;
 					const accessToken = jwt.sign(
-						{ email: user.email, id: user.id },
+						{ userName: user.userName, id: user.id },
 						accessTokenSecret,
 						{
 							expiresIn: 60 * 60 * 24, // 1 day
@@ -49,7 +36,7 @@ class UserController {
 				}
 				return failRes(res, { message: UserApiMessage.WRONG_PASSWORD });
 			}
-			return failRes(res, { message: UserApiMessage.EMAIL_NOT_FOUND });
+			return failRes(res, { message: UserApiMessage.USERNAME_NOT_FOUND });
 		} catch (error) {
 			return errorRes(res, error);
 		}
@@ -61,29 +48,23 @@ class UserController {
 			// const adminRole = USER_ROLE.ADMIN;
 			const adminRole = null;
 
-			let { email, userName } = req.body;
+			let { userName } = req.body;
 
 			const { password, userType } = req.body;
-			email = String(email);
-			userName = String(userName);
+			userName = String(userName).trim();
 			// TODO: create user by userName here
 
-			if (!email && !userName) {
+			if (!userName) {
 				return errorRes(res, { message: apiMessage.Common.BAD_REQUEST });
 			}
 
-			if (!emailIsValid(email) || !(email.slice(email.length - 10) === '@gmail.com')) {
-				return errorRes(res, { message: apiMessage.Common.BAD_REQUEST });
-			}
-			email = normalizeEmail(email);
-
-			const existedUser = await userService.getByEmail(email);
+			const existedUser = await userService.getByUsername(userName);
 			if (existedUser) {
-				return failRes(res, { message: UserApiMessage.EXIST_EMAIL });
+				return failRes(res, { message: UserApiMessage.EXIST_USERNAME });
 			}
 			const hashedPassword = await hashPassword(password);
 
-			const userData = { ...req.body, email, password: hashedPassword, playlistUrl: email.split('@')[0] };
+			const userData = { ...req.body, userName, password: hashedPassword, playlistUrl: userName };
 			console.log(userData);
 
 			const user = await userService.create(userData);

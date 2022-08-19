@@ -6,7 +6,7 @@ import { ApiStatus } from '../../constants/apiConstant';
 const USER_BASE_URL = '/api/user';
 
 const user: any = {
-	email: `inte_test_user_${new Date().getTime()}@gmail.com`,
+	userName: `inte_test_user_${new Date().getTime()}`,
 	password: 'pass_123',
 };
 

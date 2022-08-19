@@ -4,10 +4,10 @@ import { filtered } from '../utils/commonFuncs';
 import { convertCamelKeys, convertSnakeKeys } from '../utils/converts';
 
 class UserService {
-	async getByEmail(email: string) {
+	async getByUsername(userName: string) {
 		const data = await db
 			.from(Tables.user)
-			.where({ email })
+			.where({ user_name: userName })
 			.whereNull(UserTable.deletedAt)
 			.then((data: any) => convertCamelKeys(data));
 		if (data.length !== 1) {

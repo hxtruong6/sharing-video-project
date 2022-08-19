@@ -41,12 +41,12 @@
 
     -   [POST] Login: `/api/user/login`
 
-              Input: {email, password}
+              Input: {userName, password}
               Ouput: user, token}
 
     -   [POST] Register: `/api/user/register`
 
-              Input: {email, password}
+              Input: {userName, password}
               Ouput: {user}
 
 2.  Video

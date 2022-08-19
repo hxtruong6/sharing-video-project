@@ -40,9 +40,9 @@ class UserMessage extends CommonMessage {
 
 	public INVALID_USER: string = 'Invalid user';
 
-	public EMAIL_NOT_FOUND: string = 'Email not found';
+	public USERNAME_NOT_FOUND: string = 'user name is not found';
 
-	public EXIST_EMAIL: string = 'Exist email. Try with other email';
+	public EXIST_USERNAME: string = 'Exist user name. Try with other user name';
 }
 
 const ApiMessage = new CommonMessage();
