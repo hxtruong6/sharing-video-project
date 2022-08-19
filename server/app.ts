@@ -2,8 +2,10 @@
 import chalk from 'chalk';
 import cors from 'cors';
 import express, { json, NextFunction, Request, Response, urlencoded } from 'express';
+import envConfig from './config/env.config';
 // import path from 'path';
 import { ApiMethod } from './constants/apiConstant';
+import Environment from './constants/environment';
 import boolQueryParser from './middleware/boolQueryParser';
 import errorRouter from './middleware/errorRouter';
 import invalidRouter from './middleware/invalidRouter';
@@ -11,6 +13,11 @@ import routes from './routes';
 
 require('xtlog').apply();
 const { i } = require('xtlog');
+
+// if (envConfig.ENVIRONMENT === Environment.TEST) {
+// 	console.log = function () {};
+// 	console.info = function () {};
+// }
 
 const app = express();
 

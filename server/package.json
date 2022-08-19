@@ -10,6 +10,7 @@
 		"build": "tsc --project ./",
 		"test": "ENV_FILE=.env.test npx jest ./__tests__/ --detectOpenHandles --forceExit --runInBand --passWithNoTests",
 		"test:unit": "ENV_FILE=.env.test npx jest ./__tests__/unit/ --detectOpenHandles --forceExit --runInBand --passWithNoTests",
+		"test:integration": "ENV_FILE=.env.test npx jest ./__tests__/integration/ --detectOpenHandles --forceExit --runInBand --passWithNoTests",
 		"test:coverage": "ENV_FILE=.env.test npx jest --detectOpenHandles --forceExit --runInBand --passWithNoTests --coverage",
 		"db:generate": "npx ts-node models/generateData.ts",
 		"db:seed": "npx ts-node models/seed.ts",

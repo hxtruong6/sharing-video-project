@@ -3,7 +3,7 @@ import { ApiMessage } from '../constants/apiMessage';
 import { errorRes } from '../utils/standardResponse';
 
 import userRouter from './user.router';
-import videoRouter from './video.router';
+// import videoRouter from './video.router';
 
 export default (app: Express) => {
 	app.get('/', (req: Request, res: Response) => {
@@ -16,7 +16,7 @@ export default (app: Express) => {
 	// Private
 	// TODO: Add validator req from router (fastest-validator)
 	app.use('/api/user', userRouter);
-	app.use('/api/video', videoRouter);
+	// app.use('/api/video', videoRouter);
 
 	app.use('*', (req: Request, res: Response) => {
 		errorRes(res, { message: ApiMessage.ROUTE_NOT_FOUND });

@@ -77,19 +77,13 @@ class UserController {
 			}
 			email = normalizeEmail(email);
 
-			let role;
-
-			if (userType === USER_TYPE.VENDOR) {
-				role = adminRole || USER_ROLE.GUEST;
-			}
-
 			const existedUser = await userService.getByEmail(email);
 			if (existedUser) {
 				return failRes(res, { message: UserApiMessage.EXIST_EMAIL });
 			}
 			const hashedPassword = await hashPassword(password);
 
-			const userData = { ...req.body, email, password: hashedPassword, role, userType };
+			const userData = { ...req.body, email, password: hashedPassword, playlistUrl: email.split('@')[0] };
 			console.log(userData);
 
 			const user = await userService.create(userData);
