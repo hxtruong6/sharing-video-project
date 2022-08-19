@@ -4,14 +4,30 @@ import _ from 'lodash';
 import fs from 'fs';
 import axios from 'axios';
 import RequestWithUser from '../interfaces/requestWithUser.interface';
+import { PAGINATION_DEFAULT } from '../constants/constants';
 
 function hashPassword(password: string): Promise<string> {
 	return bcrypt.hash(password, 10);
 }
 
 const getPagination = (perPage: any, page: any) => {
-	const limit = Number(perPage) || 20;
-	const offset = (Number(page) - 1) * limit || 0;
+	const limit = Number(Math.max(perPage, 0)) || PAGINATION_DEFAULT.LIMIT;
+	const offset = (Number(Math.max(page, 0)) - 1) * limit || PAGINATION_DEFAULT.OFFSET;
+	return { limit, offset };
+};
+
+const processPagination = (perPage: any, page: any) => {
+	let limit = PAGINATION_DEFAULT.LIMIT;
+	let offset = PAGINATION_DEFAULT.OFFSET;
+
+	if (perPage && page) {
+		const pagi = getPagination(perPage, page);
+		limit = pagi.limit;
+		offset = pagi.offset;
+	} else if (perPage) {
+		limit = perPage;
+	}
+
 	return { limit, offset };
 };
 
@@ -61,18 +77,20 @@ const downloadImage = (url: string, imagePath: string) =>
 	axios({
 		url,
 		responseType: 'stream',
-	}).then(
-		(response) =>
-			new Promise((resolve, reject) => {
-				response.data
-					.pipe(fs.createWriteStream(imagePath))
-					.on('finish', () => resolve(true))
-					.on('error', (e: Error) => reject(e));
-			})
-	).catch((error) => {
-		console.error('Error when download image: ', error);
-		return new Error(error);
-	});
+	})
+		.then(
+			(response) =>
+				new Promise((resolve, reject) => {
+					response.data
+						.pipe(fs.createWriteStream(imagePath))
+						.on('finish', () => resolve(true))
+						.on('error', (e: Error) => reject(e));
+				})
+		)
+		.catch((error) => {
+			console.error('Error when download image: ', error);
+			return new Error(error);
+		});
 
 const filtered = (
 	raw: any,
@@ -118,20 +136,22 @@ function comparePosition(obj1, obj2) {
 function createNestedObjFromArray(arr: any, key = 'id') {
 	const obj = convertArrayToObject(arr, key);
 
-	Object.values(obj).sort(comparePosition).forEach((item: any) => {
-		if (item.parentId) {
-			obj[item.id].parent = { ...obj[item.parentId] };
-			if (!obj[item.parentId]) return;
+	Object.values(obj)
+		.sort(comparePosition)
+		.forEach((item: any) => {
+			if (item.parentId) {
+				obj[item.id].parent = { ...obj[item.parentId] };
+				if (!obj[item.parentId]) return;
 
-			if (obj[item.parentId]?.childrenId) {
-				obj[item.parentId].childrenId.push(item.id);
-				// obj[item.parentId].children.push({ ...item });
-			} else {
-				obj[item.parentId].childrenId = [item.id];
-				// obj[item.parentId].children = [{ ...item }];
+				if (obj[item.parentId]?.childrenId) {
+					obj[item.parentId].childrenId.push(item.id);
+					// obj[item.parentId].children.push({ ...item });
+				} else {
+					obj[item.parentId].childrenId = [item.id];
+					// obj[item.parentId].children = [{ ...item }];
+				}
 			}
-		}
-	});
+		});
 
 	// console.log(obj);
 
@@ -194,5 +214,6 @@ export {
 	sqlCreateArrayString,
 	normalizeSearhTerm,
 	createNestedObjFromArray,
-	normalizeSKU
+	normalizeSKU,
+	processPagination,
 };

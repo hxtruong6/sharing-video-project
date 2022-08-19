@@ -9,14 +9,15 @@ import { errorRes, failRes, successRes } from '../utils/standardResponse';
 class VideoController {
 	async getAll(req: Request, res: Response) {
 		try {
-			const { playlistUrl } = req.query;
+			const { playlistUrl } = req.params;
+			const { perPage, page } = req.body;
 
 			if (playlistUrl) {
 				const data = await videoUserService.getByPlaylistUrl(playlistUrl);
 				return successRes(res, convertCamelKeys(data));
 			}
 
-			const data = await videoService.getAll();
+			const data = await videoService.getAll({ perPage, page });
 			return successRes(res, convertCamelKeys(data));
 		} catch (error) {
 			return errorRes(res, error);

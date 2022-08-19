@@ -37,6 +37,11 @@ const PRICE_FILTER = {
 	MAX_PRICE: 10000000000000,
 };
 
+const PAGINATION_DEFAULT = {
+	LIMIT: 20,
+	OFFSET: 0,
+};
+
 // eslint-disable-next-line import/prefer-default-export
 export {
 	UploadImageFolder,
@@ -45,4 +50,5 @@ export {
 	USER_ROLE,
 	USER_TYPE,
 	PRICE_FILTER,
+	PAGINATION_DEFAULT,
 };

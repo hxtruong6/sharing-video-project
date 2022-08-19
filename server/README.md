@@ -51,12 +51,13 @@
 
 2.  Video
 
-    -   [GET] Get All: `/api/video`
+    -   [POST] Get All: `/api/video/public`
 
         -   Get all sharing video (don't need to authenticated user)
 
                   Input: {}
-                  Ouput: { videos: [], total, page, size }
+                  Body: {page, perPage}
+                  Ouput: { videos: [], total, page, perPage }
 
     -   [GET] Get video by user: `/api/video/list`
 
@@ -64,7 +65,7 @@
 
                   Header: {authorization}
                   Input: {}
-                  Ouput: { videos: [], total, page, size }
+                  Ouput: { videos: [] }
 
     -   [POST] : `/api/video`
 
@@ -78,7 +79,7 @@
         -   Change public video or not of requested user
 
                   Header: {authorization}
-                  Input: {likeAdd (1/-1)} | { isPublic (current public status)}
+                  Body: {likeAdd (1/-1)} | { isPublic (current public status)}
                   Ouput: **Standard response**
 
 3.  Playlist

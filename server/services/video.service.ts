@@ -1,23 +1,41 @@
 import Tables, { VideoTable } from '../constants/schema';
 import db from '../models';
-import { toUrlString } from '../utils/commonFuncs';
-import { convertSnakeKeys } from '../utils/converts';
+import { copyObject, processPagination, toUrlString } from '../utils/commonFuncs';
+import { convertCamelKeys, convertSnakeKeys } from '../utils/converts';
 
 class VideoService {
 	getById(id: number) {
 		return db.from(Tables.video).where({ id }).whereNull(VideoTable.deletedAt).first();
 	}
 
-	getAll() {
-		return db.from(Tables.video).select().whereNull(VideoTable.deletedAt).orderBy(`${Tables.video}.${VideoTable.createdAt}`);
+	async getAll(params: any = {}) {
+		const { page, perPage } = params;
+		const { limit, offset } = processPagination(perPage, page);
+
+		const data = await db
+			.from(Tables.video)
+			.whereNull(VideoTable.deletedAt)
+			.limit(limit)
+			.offset(offset)
+			.orderBy(`${Tables.video}.${VideoTable.createdAt}`)
+			.select('*')
+			.select(db.raw(`count(${Tables.video}.id) OVER() as total`))
+			.then((r: any) => convertCamelKeys(r));
+
+		// console.log('xxx 300 data', data);
+
+		return {
+			perPage,
+			page,
+			total: data.length > 0 ? Number(data[0].total) : 0,
+			videos: data.map((item: any) => copyObject(item, ['total'])),
+		};
 	}
 
 	async create(video: any, userId: number) {
 		const data = await db
 			.from(Tables.video)
-			.insert(
-				convertSnakeKeys({ ...video, createdBy: userId })
-			)
+			.insert(convertSnakeKeys({ ...video, createdBy: userId }))
 			.returning('*');
 		return data?.[0];
 	}
