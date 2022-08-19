@@ -87,7 +87,7 @@
 
     For first user who don't know any playlist server just show all public video that is being in database.
 
-    -   [GET] Get by user: `/api/video/:playlistSlug`
+    -   [GET] Get by user: `/api/video/:playlistUrl`
 
         -   Get all public video of specific user for non-authenticated user.
 

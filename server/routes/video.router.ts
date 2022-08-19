@@ -6,7 +6,7 @@ const videoRouter = Router();
 
 videoRouter
 // Get all no need to authentication - Can be divided into public or private router.
-	.get('/:playlistSlug', bannerController.getAll)
+	.get('/:playlistUrl', bannerController.getAll)
 	.get('/', bannerController.getAll)
 
 // Other router need to check authentication user
