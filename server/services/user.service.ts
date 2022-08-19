@@ -13,7 +13,7 @@ class UserService {
 		if (data.length !== 1) {
 			return null;
 		}
-		return data[0];
+		return filtered(data[0], { excepted: ['password'] });
 	}
 
 	async getById(id: number) {
@@ -27,6 +27,19 @@ class UserService {
 			return null;
 		}
 
+		return filtered(data[0], { excepted: ['password'] });
+	}
+
+	async getByPlaylistUrl(url: string) {
+		const data = await db
+			.from(Tables.user)
+			.where({ playlist_url: url })
+			.whereNull(UserTable.deletedAt)
+			.then((data: any) => convertCamelKeys(data));
+
+		if (data.length !== 1) {
+			return null;
+		}
 		return filtered(data[0], { excepted: ['password'] });
 	}
 

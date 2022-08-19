@@ -57,3 +57,7 @@ Authorization: Bearer {{token}}
     "id": "{{id1}}",
     "isPublic": true
 }
+
+### Get by playlistUrl
+GET {{baseUrl}}/ HTTP/1.1
+Authorization: Bearer {{token}}

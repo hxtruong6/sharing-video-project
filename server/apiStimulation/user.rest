@@ -17,8 +17,8 @@ POST  {{baseUrl}}/login HTTP/1.1
 content-type: application/json
 
 {
-    "userName": "user_2",
-    "password": "abc123"
+    "userName": "admin",
+    "password": "admin"
 }
 
 ###

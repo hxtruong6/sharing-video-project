@@ -3,6 +3,7 @@ import Tables, { VideoTable, VideoUserTable } from '../constants/schema';
 import db from '../models';
 import { convertCamelKeys, convertSnakeKeys } from '../utils/converts';
 import { failRes } from '../utils/standardResponse';
+import userService from './user.service';
 
 class VideoUserService {
 	getById(id: number) {
@@ -23,6 +24,29 @@ class VideoUserService {
 				`${Tables.videoUser}.${VideoUserTable.videoId}`
 			)
 			.where(VideoUserTable.userId, '=', userId)
+			.select(
+				`${Tables.videoUser}.*`,
+				`${Tables.video}.name as name`,
+				`${Tables.video}.url as url`,
+				`${Tables.video}.description as description`
+			)
+			.then((r) => convertCamelKeys(r));
+	}
+
+	async getByPlaylistUrl(url) {
+		const user = await userService.getByPlaylistUrl(url);
+
+		console.log(user);
+		if (!user) return null;
+
+		return db
+			.from(Tables.videoUser)
+			.join(
+				Tables.video,
+				`${Tables.video}.${VideoTable.id}`,
+				`${Tables.videoUser}.${VideoUserTable.videoId}`
+			)
+			.where(VideoUserTable.isPublic, '=', true)
 			.select(
 				`${Tables.videoUser}.*`,
 				`${Tables.video}.name as name`,
