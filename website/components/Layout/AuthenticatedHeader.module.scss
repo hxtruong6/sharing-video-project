@@ -1,0 +1,11 @@
+.autHeader {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__userName {
+    margin-left: 4px;
+    font-weight: bold;
+    color: rgb(3, 85, 192);
+  }
+}

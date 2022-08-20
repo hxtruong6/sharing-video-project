@@ -1,13 +1,24 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from './layout.module.css'
-import utilStyles from '../styles/utils.module.css'
-import Link from 'next/link'
+import Head from "next/head";
+import Image from "next/image";
+import styles from "./layout.module.scss";
+import "./layout.module.scss";
 
-const name = '[Your Name]'
-export const siteTitle = 'Next.js Sample Website'
+import utilStyles from "../styles/utils.module.css";
+import Link from "next/link";
+
+import { Layout as LayoutAntd, Row, Col } from "antd";
+import React from "react";
+import AuthenticatedHeader from "./Layout/AuthenticatedHeader";
+import UnauthenticatedHeader from "./Layout/UnauthenticatedHeader";
+
+const { Header, Footer, Sider, Content } = LayoutAntd;
+
+const name = "[Your Name]";
+export const siteTitle = "So Scary Videos";
 
 export default function Layout({ children, home }) {
+  const isLogged = true;
+
   return (
     <div className={styles.container}>
       <Head>
@@ -26,7 +37,25 @@ export default function Layout({ children, home }) {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header className={styles.header}>
-        {home ? (
+        <Row className={styles.header__row}>
+          <Col className="gutter-row" span={1}>
+            <Image
+              priority
+              src="/images/rlogo.png"
+              className={utilStyles.borderCircle}
+              height={48}
+              width={48}
+              alt={name}
+            />
+          </Col>
+          <Col className="gutter-row" span={6}>
+            <div className={styles.header__title}>{siteTitle}</div>
+          </Col>
+          <Col className="gutter-row" span={16}>
+            {isLogged ? <AuthenticatedHeader /> : <UnauthenticatedHeader />}
+          </Col>
+        </Row>
+        {/* {home ? (
           <>
             <Image
               priority
@@ -58,7 +87,7 @@ export default function Layout({ children, home }) {
               </Link>
             </h2>
           </>
-        )}
+        )} */}
       </header>
       <main>{children}</main>
       {!home && (
@@ -69,5 +98,5 @@ export default function Layout({ children, home }) {
         </div>
       )}
     </div>
-  )
+  );
 }
