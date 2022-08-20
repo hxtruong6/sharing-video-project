@@ -1,83 +1,96 @@
 import { Row } from "antd";
 import { Button, Checkbox, Form, Input } from "antd";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 
 const AccountForm = () => {
-  const onFinish = (values) => {
-    console.log("Success:", values);
-  };
+  const [form] = Form.useForm();
+  const [, forceUpdate] = useState({}); // To disable submit button at the beginning.
 
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
+  useEffect(() => {
+    forceUpdate({});
+  }, []);
+
+  const onFinish = (values) => {
+    console.log("Finish:", values);
   };
 
   return (
     <Form
-      name="basic"
-      //   labelCol={{
-      //     span: 8,
-      //   }}
-      //   wrapperCol={{
-      //     span: 16,
-      //   }}
-      initialValues={{
-        remember: true,
-      }}
+      form={form}
+      name="horizontal_login"
+      layout="inline"
       onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-      autoComplete="true"
     >
-      <Row>
-        <Form.Item
-          style={{ paddingRight: 8 }}
-          //   label="Username"
+      <Form.Item
+        style={{ maxWidth: 200 }}
+        name="username"
+        rules={[
+          {
+            required: true,
+            message: "Please input your username!",
+          },
+        ]}
+      >
+        <Input
+          prefix={<UserOutlined className="site-form-item-icon" />}
+          placeholder="Username"
+        />
+      </Form.Item>
+      <Form.Item
+        style={{ maxWidth: 200 }}
+        name="password"
+        rules={[
+          {
+            required: true,
+            message: "Please input your password!",
+          },
+        ]}
+      >
+        <Input
+          prefix={<LockOutlined className="site-form-item-icon" />}
+          type="password"
+          placeholder="Password"
+        />
+      </Form.Item>
 
-          name="username"
-          rules={[
-            {
-              required: true,
-              message: "Please input your username!",
-            },
-          ]}
-        >
-          <Input placeholder="Username" />
-        </Form.Item>
-
-        <Form.Item
-          style={{ paddingRight: 8 }}
-          //   label="Password"
-
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Please input your password!",
-            },
-          ]}
-        >
-          <Input.Password placeholder="Password" />
-        </Form.Item>
-
-        <Form.Item>
-          <Button type="primary" htmlType="submit" style={{ marginRight: 8 }}>
-            Login
-          </Button>
-        </Form.Item>
-
-        <Form.Item>
+      <Form.Item shouldUpdate>
+        {() => (
           <Button
-            ghost
-            // type="primary"
+            type="primary"
+            htmlType="submit"
+            disabled={
+              !form.isFieldsTouched(true) ||
+              !!form.getFieldsError().filter(({ errors }) => errors.length)
+                .length
+            }
+          >
+            Log in
+          </Button>
+        )}
+      </Form.Item>
+
+      <Form.Item shouldUpdate>
+        {() => (
+          <Button
+            // ghost
+            type="primary"
+            htmlType="submit"
+            disabled={
+              !form.isFieldsTouched(true) ||
+              !!form.getFieldsError().filter(({ errors }) => errors.length)
+                .length
+            }
             style={{
+              color: "white",
               backgroundColor: "rgb(1, 56, 138)",
               borderColor: "rgb(1, 56, 138)",
             }}
-            htmlType="submit"
           >
             Register
           </Button>
-        </Form.Item>
-      </Row>
+        )}
+      </Form.Item>
     </Form>
   );
 };
