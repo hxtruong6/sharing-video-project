@@ -1,7 +1,11 @@
-import { Row } from "antd";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+
+const TYPE_BTN = {
+  LOGGIN: "LOGGIN",
+  REGISTER: "REGISTER",
+};
 
 const AccountForm = () => {
   const [form] = Form.useForm();
@@ -11,8 +15,8 @@ const AccountForm = () => {
     forceUpdate({});
   }, []);
 
-  const onFinish = (values) => {
-    console.log("Finish:", values);
+  const onFinish = (typeBtn) => {
+    console.log("Finish:", typeBtn, form.getFieldValue());
   };
 
   return (
@@ -20,7 +24,7 @@ const AccountForm = () => {
       form={form}
       name="horizontal_login"
       layout="inline"
-      onFinish={onFinish}
+      // onFinish={onFinish}
     >
       <Form.Item
         style={{ maxWidth: 200 }}
@@ -57,6 +61,7 @@ const AccountForm = () => {
       <Form.Item shouldUpdate>
         {() => (
           <Button
+            name="login"
             type="primary"
             htmlType="submit"
             disabled={
@@ -64,6 +69,7 @@ const AccountForm = () => {
               !!form.getFieldsError().filter(({ errors }) => errors.length)
                 .length
             }
+            onClick={() => onFinish(TYPE_BTN.LOGGIN)}
           >
             Log in
           </Button>
@@ -86,6 +92,7 @@ const AccountForm = () => {
               backgroundColor: "rgb(1, 56, 138)",
               borderColor: "rgb(1, 56, 138)",
             }}
+            onClick={() => onFinish(TYPE_BTN.REGISTER)}
           >
             Register
           </Button>
