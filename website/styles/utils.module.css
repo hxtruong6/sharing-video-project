@@ -15,14 +15,15 @@
 }
 
 .headingLg {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   line-height: 1.4;
   margin: 1rem 0;
 }
 
 .headingMd {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   line-height: 1.5;
+  margin-top: 16px;
 }
 
 .borderCircle {
@@ -44,7 +45,7 @@
 }
 
 .listItem {
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.4rem;
 }
 
 .lightText {

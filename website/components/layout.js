@@ -10,15 +10,14 @@ import { Layout as LayoutAntd, Row, Col } from "antd";
 import React from "react";
 import AuthenticatedHeader from "./Layout/AuthenticatedHeader";
 import UnauthenticatedHeader from "./Layout/UnauthenticatedHeader";
+import { Divider } from "antd";
 
 const { Header, Footer, Sider, Content } = LayoutAntd;
 
 const name = "[Your Name]";
 export const siteTitle = "So Scary Videos";
 
-export default function Layout({ children, home }) {
-  const isLogged = true;
-
+export default function Layout({ children, home, isLogged }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -55,6 +54,7 @@ export default function Layout({ children, home }) {
             {isLogged ? <AuthenticatedHeader /> : <UnauthenticatedHeader />}
           </Col>
         </Row>
+        <Divider />
         {/* {home ? (
           <>
             <Image

@@ -1,0 +1,25 @@
+.VideoCard {
+    &__col {
+        flex-wrap: wrap;
+    }
+
+    &__sec1 {
+        flex-flow: row nowrap;
+    }
+
+    &__title {
+        font-weight: bold;
+        font-size: 1.8rem;
+        color: rgb(255, 110, 110);
+    }
+
+    &__des {
+        font-weight: bold;
+        font-weight: 1.4rem;
+        display: block;
+    }
+
+    &__like {
+        margin-right: 12px;
+    }
+}
