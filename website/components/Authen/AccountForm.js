@@ -38,6 +38,22 @@ const AccountForm = () => {
       }
 
       // console.log("xxx res", res);
+    } else if (typeBtn === TYPE_BTN.LOGGIN) {
+      const res = await userApi.register({
+        userName: values.username,
+        password: values.password,
+      });
+
+      if (res?.status === ApiStatus.Success) {
+        openNotification("Login successed", NotifyType.Success);
+        localStorage.setItem("token", res?.data?.token);
+      } else {
+        openNotification(
+          "Register failed!",
+          NotifyType.Error,
+          res?.data?.message
+        );
+      }
     }
   };
 
