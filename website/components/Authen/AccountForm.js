@@ -1,6 +1,9 @@
 import { Button, Form, Input } from "antd";
 import React, { useEffect, useState } from "react";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
+import userApi from "../../services/userApi";
+import { ApiStatus, NotifyType } from "../../utils/constants";
+import openNotification from "../../utils/notify";
 
 const TYPE_BTN = {
   LOGGIN: "LOGGIN",
@@ -15,8 +18,27 @@ const AccountForm = () => {
     forceUpdate({});
   }, []);
 
-  const onFinish = (typeBtn) => {
+  const onFinish = async (typeBtn) => {
     console.log("Finish:", typeBtn, form.getFieldValue());
+    const values = form.getFieldValue();
+    if (typeBtn === TYPE_BTN.REGISTER) {
+      const res = await userApi.register({
+        userName: values.username,
+        password: values.password,
+      });
+
+      if (res?.status === ApiStatus.Success) {
+        openNotification("Register successed", NotifyType.Success);
+      } else {
+        openNotification(
+          "Register failed!",
+          NotifyType.Error,
+          res?.data?.message
+        );
+      }
+
+      // console.log("xxx res", res);
+    }
   };
 
   return (
