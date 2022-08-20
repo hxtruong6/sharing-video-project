@@ -4,6 +4,7 @@ import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import userApi from "../../services/userApi";
 import { ApiStatus, NotifyType } from "../../utils/constants";
 import openNotification from "../../utils/notify";
+import { setToken } from "../../services/fetcher";
 
 const TYPE_BTN = {
   LOGGIN: "LOGGIN",
@@ -18,42 +19,59 @@ const AccountForm = () => {
     forceUpdate({});
   }, []);
 
-  const onFinish = async (typeBtn) => {
+  const onLogin = async (values) => {
+    const res = await userApi.login({
+      userName: values.username,
+      password: values.password,
+    });
+
+    if (res?.status === ApiStatus.Success) {
+      openNotification("Login successed", NotifyType.Success);
+
+      const user = res?.data;
+
+      setToken(user?.token);
+      localStorage.setItem("token", user?.token);
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          id: user?.id,
+          userName: user?.userName,
+        })
+      );
+
+      console.log(JSON.parse(localStorage.getItem("user")));
+    } else {
+      openNotification("Login failed!", NotifyType.Error, res?.data?.message);
+    }
+  };
+
+  const onRegister = async (values) => {
+    const res = await userApi.register({
+      userName: values.username,
+      password: values.password,
+    });
+
+    if (res?.status === ApiStatus.Success) {
+      openNotification("Register successed", NotifyType.Success);
+    } else {
+      openNotification(
+        "Register failed!",
+        NotifyType.Error,
+        res?.data?.message
+      );
+    }
+
+    // console.log("xxx res", res);
+  };
+
+  const onFinish = (typeBtn) => {
     console.log("Finish:", typeBtn, form.getFieldValue());
     const values = form.getFieldValue();
     if (typeBtn === TYPE_BTN.REGISTER) {
-      const res = await userApi.register({
-        userName: values.username,
-        password: values.password,
-      });
-
-      if (res?.status === ApiStatus.Success) {
-        openNotification("Register successed", NotifyType.Success);
-      } else {
-        openNotification(
-          "Register failed!",
-          NotifyType.Error,
-          res?.data?.message
-        );
-      }
-
-      // console.log("xxx res", res);
+      onRegister(values);
     } else if (typeBtn === TYPE_BTN.LOGGIN) {
-      const res = await userApi.register({
-        userName: values.username,
-        password: values.password,
-      });
-
-      if (res?.status === ApiStatus.Success) {
-        openNotification("Login successed", NotifyType.Success);
-        localStorage.setItem("token", res?.data?.token);
-      } else {
-        openNotification(
-          "Register failed!",
-          NotifyType.Error,
-          res?.data?.message
-        );
-      }
+      onLogin(values);
     }
   };
 

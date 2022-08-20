@@ -17,7 +17,7 @@ const { Header, Footer, Sider, Content } = LayoutAntd;
 const name = "[Your Name]";
 export const siteTitle = "So Scary Videos";
 
-export default function Layout({ children, home, isLogged }) {
+export default function Layout({ children, home, currUser }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -47,11 +47,11 @@ export default function Layout({ children, home, isLogged }) {
               alt={name}
             />
           </Col>
-          <Col className="gutter-row" span={6}>
+          <Col className="gutter-row" span={8}>
             <div className={styles.header__title}>{siteTitle}</div>
           </Col>
-          <Col className="gutter-row" span={16}>
-            {isLogged ? <AuthenticatedHeader /> : <UnauthenticatedHeader />}
+          <Col className="gutter-row" span={14}>
+            {currUser ? <AuthenticatedHeader /> : <UnauthenticatedHeader />}
           </Col>
         </Row>
         <Divider />
