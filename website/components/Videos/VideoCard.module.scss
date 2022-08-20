@@ -7,9 +7,13 @@
         flex-flow: row nowrap;
     }
 
+    &__secChild {
+        width: 100%;
+    }
+
     &__title {
         font-weight: bold;
-        font-size: 1.8rem;
+        font-size: 2rem;
         color: rgb(255, 110, 110);
     }
 
@@ -21,5 +25,10 @@
 
     &__like {
         margin-right: 12px;
+    }
+
+    &__likeAction {
+        margin-left: auto;
+        justify-content: flex-end;
     }
 }

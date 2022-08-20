@@ -35,7 +35,7 @@ function VideoCard({ video, isLogged }) {
       <Col span={8}>Image</Col>
       <Col span={14}>
         <Row className={styles.VideoCard__sec1}>
-          <Col>
+          <Col className={styles.VideoCard__sec1Child}>
             <div className={styles.VideoCard__title}>{title}</div>
             <Row>
               Shared by:{"  "}
@@ -45,20 +45,26 @@ function VideoCard({ video, isLogged }) {
             </Row>
             <Row>
               <div className={styles.VideoCard__like}>
-                {like} <LikeOutlined />
+                {like} <LikeOutlined style={{ color: "#6E6EFF" }} />
               </div>
               <div className={styles.VideoCard__like}>
-                {dislike} <DislikeOutlined />
+                {dislike} <DislikeOutlined style={{ color: "#FFB76E" }} />
               </div>
             </Row>
           </Col>
           {isLogged && (
-            <Row>
+            <Row className={styles.VideoCard__likeAction}>
               <Button
+                size="large"
+                shape="circle"
+                style={{ margin: 8 }}
                 type="text"
                 icon={<LikeOutlined style={{ fontSize: 32 }} />}
               />
               <Button
+                size="large"
+                shape="circle"
+                style={{ margin: 8 }}
                 type="text"
                 icon={<DislikeOutlined style={{ fontSize: 32 }} />}
               />

@@ -5,7 +5,7 @@ import { getSortedPostsData } from "../lib/posts";
 import Videos from "../components/Videos/Videos";
 
 export default function Home({ allPostsData }) {
-  const isLogged = false;
+  const isLogged = true;
 
   return (
     <Layout home isLogged={isLogged}>
