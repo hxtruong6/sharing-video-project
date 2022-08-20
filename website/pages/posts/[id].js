@@ -1,6 +1,7 @@
 import Layout from "../../components/layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import Head from "next/head";
+import { Button } from "antd";
 import Date from "../../components/date";
 import utilStyles from "../../styles/utils.module.css";
 import styles from "./posts.module.scss";
@@ -16,7 +17,7 @@ export default function Post({ postData }) {
         <div className={utilStyles.lightText}>
           <Date dateString={postData.date} />
         </div>
-        <button className={styles.button}>Remi</button>
+        <Button className={styles.button}>Remi</Button>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
