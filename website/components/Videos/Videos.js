@@ -10,6 +10,8 @@ import SWRKey from "../../utils/swrKey";
 import useSWR from "swr";
 import fetcher from "../../services/fetcher";
 import { getCurrentUser } from "../../utils/commonFuncs";
+import { Switch } from "antd";
+import { Row } from "antd";
 
 const vis = [
   {
@@ -69,12 +71,21 @@ function Videos({ isLogged }) {
   }, []);
 
   useEffect(() => {
-    const getAllPublicVideo = async () => {
-      const res = await videoApi.getAllPublic({ page, perPage });
+    if (!currUser) {
+      setAllPublic(true);
+    }
+
+    const fetchVideos = async () => {
+      const query =
+        !allPublic && currUser
+          ? videoApi.getPrivateVideos({ page, perPage })
+          : videoApi.getAllPublic({ page, perPage });
+      const res = await query;
+
       const { status, data: resData } = res;
 
       if (status === ApiStatus.Success) {
-        console.log("xxx 350 videos: ", resData);
+        // console.log("xxx 350 videos: ", resData);
         setVideos(resData.videos);
         setTotal(resData.total);
       } else {
@@ -86,9 +97,7 @@ function Videos({ isLogged }) {
       }
     };
 
-    // if (allPublic) {
-    getAllPublicVideo();
-    // }
+    fetchVideos();
   }, [allPublic, page, perPage, fetcher, currUser]);
 
   // console.log("fetcher: ", fetcher, currUser);
@@ -97,8 +106,24 @@ function Videos({ isLogged }) {
     setPage(pagiPage);
   };
 
+  const onSwitchPrivateVideos = (checked) => {
+    if (currUser) {
+      setAllPublic(checked);
+    } else {
+      setAllPublic(true);
+    }
+  };
+
   return (
     <div className={styles.videos}>
+      <Row className={styles.videos__switch}>
+        <Switch
+          checked={allPublic}
+          onChange={onSwitchPrivateVideos}
+          checkedChildren="Public"
+          unCheckedChildren="Personal"
+        />
+      </Row>
       {videos?.map((video) => (
         <VideoCard key={`vic-${video.id}`} video={video} />
       ))}

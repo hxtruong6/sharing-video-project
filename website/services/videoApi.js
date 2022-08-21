@@ -22,6 +22,13 @@ class VideoApi {
       playlistUrl,
     });
   }
+
+  getPrivateVideos({ page, perPage }) {
+    return fetcher(`${this.url}/list`, ApiMethod.POST, {
+      page,
+      perPage,
+    });
+  }
 }
 
 export default new VideoApi();
