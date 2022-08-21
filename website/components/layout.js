@@ -50,7 +50,7 @@ export default function Layout({ children, home, currUser }) {
           <Col className="gutter-row" span={8}>
             <div className={styles.header__title}>{siteTitle}</div>
           </Col>
-          <Col className="gutter-row" span={14}>
+          <Col className="gutter-row" span={15}>
             {currUser ? <AuthenticatedHeader /> : <UnauthenticatedHeader />}
           </Col>
         </Row>

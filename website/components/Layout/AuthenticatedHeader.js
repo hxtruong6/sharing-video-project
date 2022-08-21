@@ -8,6 +8,9 @@ import { useState } from "react";
 import { logout } from "../../utils/commonFuncs";
 import { clearToken } from "../../services/fetcher";
 import useSWR from "swr";
+import videoApi from "../../services/videoApi";
+import { ApiStatus, NotifyType } from "../../utils/constants";
+import openNotification from "../../utils/notify";
 
 function AuthenticatedHeader() {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -20,8 +23,20 @@ function AuthenticatedHeader() {
     setIsModalVisible(true);
   };
 
-  const handleOk = () => {
+  const handleOk = async (url) => {
     setIsModalVisible(false);
+
+    const res = await videoApi.create({ url });
+
+    if (res?.status === ApiStatus.Success) {
+      openNotification("Create video successed", NotifyType.Success);
+    } else {
+      openNotification(
+        "Create video failed!",
+        NotifyType.Error,
+        res?.data?.message
+      );
+    }
   };
 
   const handleCancel = () => {
