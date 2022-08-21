@@ -1,15 +1,18 @@
-import { Col, Row, Space } from "antd";
+import { Col, Row } from "antd";
 import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { Divider } from "antd";
 import { Tag } from "antd";
-import { checkLogged, randomInt } from "../../utils/commonFuncs";
+import { getCurrentUser, randomInt } from "../../utils/commonFuncs";
 import styles from "./VideoCard.module.scss";
 import React, { useEffect, useState } from "react";
 import videoApi from "../../services/videoApi";
 import { ApiStatus, NotifyType } from "../../utils/constants";
 import openNotification from "../../utils/notify";
 import useSWR from "swr";
+import { mutate } from "swr";
+import SWRKey from "../../utils/swrKey";
+import { useSWRConfig } from "swr";
 
 const colors = [
   "magenta",
@@ -24,6 +27,11 @@ const colors = [
   "geekblue",
   "purple",
 ];
+
+const CustomColors = {
+  blue: "#2F65FF",
+  pink: "#FF2FCD",
+};
 
 const placeHolderText =
   "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \
@@ -46,9 +54,9 @@ function VideoCard({ video }) {
   const { id, title, sharedBy, description } = video;
 
   if (!id) return <></>;
-  console.log(video);
+  const { mutate } = useSWRConfig();
 
-  // const [isBelonged, setIsBelonged] = useState(false);
+  // const [refetch, setRefetch] = useState(false);
   const [currSharedUser, setCurrSharedUser] = useState(undefined);
 
   const { data: currUser } = useSWR("user", (key) => getCurrentUser());
@@ -57,8 +65,8 @@ function VideoCard({ video }) {
     setCurrSharedUser(findCurrSharedUser(video, currUser.id));
   }, [video]);
 
-  console.log("currSharedUser ", currSharedUser);
-  console.log("currUser: ", currUser);
+  // console.log("currSharedUser ", currSharedUser);
+  // console.log("currUser: ", currUser);
 
   const onLike = async () => {
     const res = await videoApi.update({
@@ -69,6 +77,7 @@ function VideoCard({ video }) {
 
     if (status === ApiStatus.Success) {
       openNotification("Liked", NotifyType.Success);
+      mutate(SWRKey.GET_VIDEOS);
     } else {
       openNotification("Like is failed", NotifyType.Error, resData?.message);
     }
@@ -83,6 +92,7 @@ function VideoCard({ video }) {
 
     if (status === ApiStatus.Success) {
       openNotification("Disliked", NotifyType.Success);
+      mutate(SWRKey.GET_VIDEOS);
     } else {
       openNotification("Dislike is failed", NotifyType.Error, resData?.message);
     }
@@ -124,18 +134,58 @@ function VideoCard({ video }) {
               <Button
                 size="large"
                 shape="circle"
-                style={{ margin: 8 }}
+                style={{
+                  margin: 8,
+                  visibility: `${
+                    currSharedUser.like !== LikeType.dislike
+                      ? "visible"
+                      : "hidden"
+                  }`,
+                }}
                 type="text"
-                icon={<LikeOutlined style={{ fontSize: 32 }} />}
-                onClick={onLike}
+                icon={
+                  <LikeOutlined
+                    style={{
+                      fontSize: 32,
+                      color: `${
+                        currSharedUser.like === LikeType.like
+                          ? `${CustomColors.blue}`
+                          : ""
+                      }`,
+                    }}
+                  />
+                }
+                onClick={() => {
+                  if (currSharedUser.like === LikeType.like) onDislike();
+                  else onLike();
+                }}
               />
               <Button
                 size="large"
                 shape="circle"
-                style={{ margin: 8 }}
+                style={{
+                  margin: 8,
+                  visibility: `${
+                    currSharedUser.like !== LikeType.like ? "visible" : "hidden"
+                  }`,
+                }}
                 type="text"
-                icon={<DislikeOutlined style={{ fontSize: 32 }} />}
-                onClick={onDislike}
+                icon={
+                  <DislikeOutlined
+                    style={{
+                      fontSize: 32,
+                      color: `${
+                        currSharedUser.like === LikeType.dislike
+                          ? `${CustomColors.pink}`
+                          : ""
+                      }`,
+                    }}
+                  />
+                }
+                onClick={() => {
+                  if (currSharedUser.like === LikeType.dislike) onLike();
+                  else onDislike();
+                }}
               />
             </Row>
           )}

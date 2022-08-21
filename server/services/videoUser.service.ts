@@ -68,16 +68,12 @@ class VideoUserService {
 		let { id } = video;
 		id = Number(id);
 
-		console.log(video);
-
 		const dbVideo = await this.getById(id);
 
 		// Return if don't have videoUser item
 		if (!dbVideo) return false;
 
 		const { like, isPublic } = dbVideo;
-
-		console.log(dbVideo);
 
 		if (likeAdd) {
 			const caculatedLike = Math.min(Math.max(like + likeAdd, -1), 1);
@@ -122,6 +118,7 @@ class VideoUserService {
 			.where(convertSnakeKeys({ videoId }))
 			.select(
 				`${Tables.videoUser}.id as video_user_id`,
+				`${Tables.videoUser}.like as like`,
 				`${Tables.user}.id as user_id`,
 				`${Tables.user}.user_name as user_name`
 			)

@@ -6,6 +6,9 @@ import videoApi from "../../services/videoApi";
 import VideoCard from "./VideoCard";
 import { Pagination } from "antd";
 import styles from "./Videos.module.scss";
+import SWRKey from "../../utils/swrKey";
+import useSWR from "swr";
+import fetcher from "../../services/fetcher";
 
 const vis = [
   {
@@ -49,6 +52,17 @@ function Videos({ isLogged }) {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(4);
 
+  // const { data, mutate } = useSWR(SWRKey.GET_VIDEOS, fetcher);
+  const { data: fetcher } = useSWR(SWRKey.GET_VIDEOS, (key) => {
+    const value = localStorage.getItem(SWRKey.GET_VIDEOS) === "true";
+    localStorage.setItem(SWRKey.GET_VIDEOS, !value ? "true" : "false");
+    return !value;
+  });
+
+  useEffect(() => {
+    localStorage.setItem(SWRKey.GET_VIDEOS, true);
+  }, []);
+
   useEffect(() => {
     const getAllPublicVideo = async () => {
       const res = await videoApi.getAllPublic({ page, perPage });
@@ -70,10 +84,13 @@ function Videos({ isLogged }) {
     if (allPublic) {
       getAllPublicVideo();
     }
-  }, [allPublic, page, perPage]);
+  }, [allPublic, page, perPage, fetcher]);
+
+  console.log("fetcher: ", fetcher);
 
   const onPaginationChange = (pagiPage, pagiPageSize) => {
     setPage(pagiPage);
+    mutate(SWRKey.GET_VIDEOS);
   };
 
   return (
