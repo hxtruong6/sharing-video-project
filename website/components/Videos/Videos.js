@@ -9,6 +9,7 @@ import styles from "./Videos.module.scss";
 import SWRKey from "../../utils/swrKey";
 import useSWR from "swr";
 import fetcher from "../../services/fetcher";
+import { getCurrentUser } from "../../utils/commonFuncs";
 
 const vis = [
   {
@@ -59,6 +60,10 @@ function Videos({ isLogged }) {
     return !value;
   });
 
+  const { data: currUser } = useSWR("user", (key) => getCurrentUser(), {
+    refreshInterval: 500,
+  });
+
   useEffect(() => {
     localStorage.setItem(SWRKey.GET_VIDEOS, true);
   }, []);
@@ -81,16 +86,15 @@ function Videos({ isLogged }) {
       }
     };
 
-    if (allPublic) {
-      getAllPublicVideo();
-    }
-  }, [allPublic, page, perPage, fetcher]);
+    // if (allPublic) {
+    getAllPublicVideo();
+    // }
+  }, [allPublic, page, perPage, fetcher, currUser]);
 
-  console.log("fetcher: ", fetcher);
+  // console.log("fetcher: ", fetcher, currUser);
 
   const onPaginationChange = (pagiPage, pagiPageSize) => {
     setPage(pagiPage);
-    mutate(SWRKey.GET_VIDEOS);
   };
 
   return (

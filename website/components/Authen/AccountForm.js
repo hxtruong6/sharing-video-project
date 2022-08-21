@@ -5,6 +5,8 @@ import userApi from "../../services/userApi";
 import { ApiStatus, NotifyType } from "../../utils/constants";
 import openNotification from "../../utils/notify";
 import { setToken } from "../../services/fetcher";
+import SWRKey from "../../utils/swrKey";
+import { useSWRConfig } from "swr";
 
 const TYPE_BTN = {
   LOGGIN: "LOGGIN",
@@ -14,6 +16,7 @@ const TYPE_BTN = {
 const AccountForm = () => {
   const [form] = Form.useForm();
   const [, forceUpdate] = useState({}); // To disable submit button at the beginning.
+  const { mutate } = useSWRConfig();
 
   useEffect(() => {
     forceUpdate({});
@@ -42,6 +45,8 @@ const AccountForm = () => {
       );
 
       console.log(JSON.parse(localStorage.getItem("user")));
+
+      mutate(SWRKey.GET_VIDEOS);
     } else {
       openNotification("Login failed!", NotifyType.Error, res?.data?.message);
     }

@@ -51,7 +51,7 @@ const totalOfDislike = (video) =>
   video?.likeStatus?.find((it) => it.like === LikeType.dislike)?.total || 0;
 
 function VideoCard({ video }) {
-  const { id, title, sharedBy, description } = video;
+  const { id, title, sharedBy, description, url } = video;
 
   if (!id) return <></>;
   const { mutate } = useSWRConfig();
@@ -62,8 +62,9 @@ function VideoCard({ video }) {
   const { data: currUser } = useSWR("user", (key) => getCurrentUser());
 
   useEffect(() => {
-    setCurrSharedUser(findCurrSharedUser(video, currUser.id));
-  }, [video]);
+    if (currUser) setCurrSharedUser(findCurrSharedUser(video, currUser.id));
+    else setCurrSharedUser(undefined);
+  }, [video, currUser]);
 
   // console.log("currSharedUser ", currSharedUser);
   // console.log("currUser: ", currUser);
@@ -100,7 +101,15 @@ function VideoCard({ video }) {
 
   return (
     <Row key={id} className={styles.VideoCard}>
-      <Col span={8}>Image</Col>
+      <Col span={8}>
+        <iframe
+          src={`https://www.youtube.com/embed/${url?.split("v=").at(-1)}`}
+          frameBorder="0"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="video"
+        />
+      </Col>
       <Col span={14}>
         <Row className={styles.VideoCard__sec1}>
           <Col className={styles.VideoCard__sec1Child}>
