@@ -6,6 +6,9 @@ import { Tag } from "antd";
 import { randomInt } from "../../utils/commonFuncs";
 import styles from "./VideoCard.module.scss";
 import React from "react";
+import videoApi from "../../services/videoApi";
+import { ApiStatus, NotifyType } from "../../utils/constants";
+import openNotification from "../../utils/notify";
 
 const colors = [
   "magenta",
@@ -29,6 +32,28 @@ function VideoCard({ video, isLogged }) {
   const { id, title, sharedUsers, like, dislike, description } = video;
 
   if (!id) return <></>;
+
+  const onLike = async () => {
+    const res = await videoApi.update({ id, likeAdd: 1 });
+    const { status, data: resData } = res;
+
+    if (status === ApiStatus.Success) {
+      openNotification("Liked", NotifyType.Success);
+    } else {
+      openNotification("Like is failed", NotifyType.Error, resData?.message);
+    }
+  };
+
+  const onDislike = async () => {
+    const res = await videoApi.update({ id, likeAdd: -1 });
+    const { status, data: resData } = res;
+
+    if (status === ApiStatus.Success) {
+      openNotification("Disliked", NotifyType.Success);
+    } else {
+      openNotification("Dislike is failed", NotifyType.Error, resData?.message);
+    }
+  };
 
   return (
     <Row key={id} className={styles.VideoCard}>
@@ -60,6 +85,7 @@ function VideoCard({ video, isLogged }) {
                 style={{ margin: 8 }}
                 type="text"
                 icon={<LikeOutlined style={{ fontSize: 32 }} />}
+                onClick={onLike}
               />
               <Button
                 size="large"
@@ -67,6 +93,7 @@ function VideoCard({ video, isLogged }) {
                 style={{ margin: 8 }}
                 type="text"
                 icon={<DislikeOutlined style={{ fontSize: 32 }} />}
+                onClick={onDislike}
               />
             </Row>
           )}

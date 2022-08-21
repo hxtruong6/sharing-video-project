@@ -26,7 +26,7 @@ const AccountForm = () => {
     });
 
     if (res?.status === ApiStatus.Success) {
-      openNotification("Login successed", NotifyType.Success);
+      openNotification("Login succeed", NotifyType.Success);
 
       const user = res?.data;
 
@@ -53,7 +53,7 @@ const AccountForm = () => {
     });
 
     if (res?.status === ApiStatus.Success) {
-      openNotification("Register successed", NotifyType.Success);
+      openNotification("Register succeed", NotifyType.Success);
     } else {
       openNotification(
         "Register failed!",

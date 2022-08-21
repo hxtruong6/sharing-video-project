@@ -29,10 +29,10 @@ function AuthenticatedHeader() {
     const res = await videoApi.create({ url });
 
     if (res?.status === ApiStatus.Success) {
-      openNotification("Create video successed", NotifyType.Success);
+      openNotification("Create sharing video succeed", NotifyType.Success);
     } else {
       openNotification(
-        "Create video failed!",
+        "Create sharing video failed!",
         NotifyType.Error,
         res?.data?.message
       );

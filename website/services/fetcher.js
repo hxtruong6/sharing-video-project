@@ -15,10 +15,10 @@ const axiosInstance = axios.create({
 // Add a request interceptor
 axiosInstance.interceptors.request.use(
   function (config) {
-    // const token = localStorage.getItem("token");
-    // config.headers["Authorization"] = `Bearer ${token}`;
+    const token = localStorage.getItem("token");
+    config.headers["Authorization"] = `Bearer ${token}`;
 
-    console.log("[config] ", config);
+    // console.log("[config] ", config);
     // Do something before request is sent
     return config;
   },
@@ -34,14 +34,14 @@ axiosInstance.interceptors.response.use(
   function (response) {
     // Any status code that lie within the range of 2xx cause this function to trigger
     // Do something with response data
-    console.log("[response] ", response);
+    // console.log("[response] ", response);
     return response.data;
   },
   function (error) {
     if (error?.response.status === ApiCode.Unauthorized) {
       localStorage.clear();
     }
-    console.log("xxx 300 ser err: ", error.response);
+    console.error("xxx 300 ser err: ", error.response);
     // Any status codes that falls outside the range of 2xx cause this function to trigger
     // Do something with response error
     // return Promise.reject(error);
