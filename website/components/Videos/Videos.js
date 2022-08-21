@@ -47,7 +47,7 @@ function Videos({ isLogged }) {
   const [videos, setVideos] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(3);
+  const [perPage, setPerPage] = useState(4);
 
   useEffect(() => {
     const getAllPublicVideo = async () => {

@@ -1,5 +1,5 @@
 import { ApiMessage } from '../constants/apiMessage';
-import Tables, { VideoTable, VideoUserTable } from '../constants/schema';
+import Tables, { UserTable, VideoTable, VideoUserTable } from '../constants/schema';
 import db from '../models';
 import { convertCamelKeys, convertSnakeKeys } from '../utils/converts';
 import { failRes } from '../utils/standardResponse';
@@ -96,6 +96,34 @@ class VideoUserService {
 			.update(convertSnakeKeys({ isPublic: !isPublic, updatedBy: userId }))
 			.returning('*');
 		return data?.[0];
+	}
+
+	async getTotalLike(videoId: number) {
+		const data = await db
+			.from(Tables.videoUser)
+			.where(convertSnakeKeys({ videoId }))
+			.groupBy(`${Tables.videoUser}.${VideoUserTable.like}`)
+			.select(`${VideoUserTable.like}`, db.raw('COUNT(*) as total'))
+			.returning('*');
+
+		// console.log('Total like: ', data);
+
+		return data;
+	}
+
+	async getUserByVideoId(videoId: number) {
+		const data = await db
+			.from(Tables.videoUser)
+			.join(
+				Tables.user,
+				`${Tables.user}.${UserTable.id}`,
+				`${Tables.videoUser}.${VideoUserTable.userId}`
+			)
+			.where(convertSnakeKeys({ videoId }))
+			.select(`${Tables.user}.id as user_id`, `${Tables.user}.user_name as user_name`)
+			.then((r) => convertCamelKeys(r));
+
+		return data;
 	}
 }
 

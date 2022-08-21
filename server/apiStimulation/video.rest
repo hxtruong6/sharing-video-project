@@ -23,7 +23,7 @@ content-type: application/json
 
 {
     "page": 1,
-    "perPage": 3
+    "perPage": 30
 }
 
 ###

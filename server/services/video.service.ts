@@ -1,7 +1,39 @@
-import Tables, { VideoTable } from '../constants/schema';
+import { Knex } from 'knex';
+import Tables, { UserTable, VideoTable, VideoUserTable } from '../constants/schema';
 import db from '../models';
 import { copyObject, processPagination, toUrlString } from '../utils/commonFuncs';
 import { convertCamelKeys, convertSnakeKeys } from '../utils/converts';
+import videoUserService from './videoUser.service';
+
+async function handleTotalLike(data) {
+	const asyncFuncs: any = [];
+	data?.forEach((video) => {
+		asyncFuncs.push(videoUserService.getTotalLike(video.id));
+	});
+
+	const likeStatus = await Promise.all(asyncFuncs);
+	const videos: any = data?.map((video, idx) => ({
+		...video,
+		likeStatus: likeStatus[idx],
+	}));
+
+	return videos;
+}
+
+async function handleShareByUser(data) {
+	const asyncFuncs: any = [];
+	data?.forEach((video) => {
+		asyncFuncs.push(videoUserService.getUserByVideoId(video.id));
+	});
+
+	const sharedBy = await Promise.all(asyncFuncs);
+	const videos: any = data?.map((video, idx) => ({
+		...video,
+		sharedBy: sharedBy[idx],
+	}));
+
+	return videos;
+}
 
 class VideoService {
 	getById(id: number) {
@@ -26,23 +58,50 @@ class VideoService {
 		const { page, perPage } = params;
 		const { limit, offset } = processPagination(perPage, page);
 
+		const withUserVideoJoin = `
+				join
+					(select
+						v1.id, vu1.id as video_user_id, vu1.user_id, u1.user_name
+					from
+						(${Tables.video} v1
+						join ${Tables.videoUser} vu1
+						on v1.id = vu1.video_id)
+
+						join "${Tables.user}" u1
+						on vu1.user_id = u1.id
+					where vu1.is_public = true
+					) video1
+				on ${Tables.video}.id = video1.id
+			`;
+
 		const data = await db
 			.from(Tables.video)
-			.whereNull(VideoTable.deletedAt)
+			// .modify((queryBuilder: Knex.QueryBuilder<any, any>) => {
+			// 	queryBuilder.joinRaw(withUserVideoJoin);
+			// })
+			.whereNull(`${Tables.video}.${VideoTable.deletedAt}`)
 			.limit(limit)
 			.offset(offset)
 			.orderBy(`${Tables.video}.${VideoTable.createdAt}`)
-			.select('*')
+			.select(
+				'*'
+				// db.raw(`TO_JSON(ARRAY_AGG(${Tables.videoUser})) as ${Tables.videoUser}s`)
+			)
 			.select(db.raw(`count(${Tables.video}.id) OVER() as total`))
 			.then((r: any) => convertCamelKeys(r));
 
 		// console.log('xxx 300 data', data);
 
+		let videos = await handleTotalLike(data);
+		videos = await handleShareByUser(videos);
+
+		// console.log('xxx 301', videos);
+
 		return {
 			perPage,
 			page,
 			total: data.length > 0 ? Number(data[0].total) : 0,
-			videos: data.map((item: any) => copyObject(item, ['total'])),
+			videos: videos.map((item: any) => copyObject(item, ['total'])),
 		};
 	}
 

@@ -62,7 +62,9 @@ function VideoCard({ video }) {
       <Col span={14}>
         <Row className={styles.VideoCard__sec1}>
           <Col className={styles.VideoCard__sec1Child}>
-            <div className={styles.VideoCard__title}>{title}</div>
+            <div className={styles.VideoCard__title}>
+              {title || `Video ${id}`}
+            </div>
             <Row>
               Shared by:{"  "}
               {sharedUsers?.map((it) => (
@@ -102,8 +104,11 @@ function VideoCard({ video }) {
           )}
         </Row>
         <Col className={styles.VideoCard__col}>
-          <div className={styles.VideoCard__des}>Description:</div>
-          <div>{description || placeHolderText}</div>
+          <div className={styles.VideoCard__des}>Description: </div>
+          <div>
+            {`[${id}] `}
+            {description || placeHolderText}
+          </div>
         </Col>
       </Col>
       <Divider />
