@@ -37,6 +37,7 @@ const AccountForm = () => {
         JSON.stringify({
           id: user?.id,
           userName: user?.userName,
+          playlistUrl: user?.playlistUrl,
         })
       );
 

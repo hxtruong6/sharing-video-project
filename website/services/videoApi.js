@@ -14,6 +14,14 @@ class VideoApi {
   update({ id, likeAdd, isPublic }) {
     return fetcher(`${this.url}`, ApiMethod.PUT, { id, likeAdd, isPublic });
   }
+
+  getAllPublic({ page, perPage, playlistUrl }) {
+    return fetcher(`${this.url}/public`, ApiMethod.POST, {
+      page,
+      perPage,
+      playlistUrl,
+    });
+  }
 }
 
 export default new VideoApi();

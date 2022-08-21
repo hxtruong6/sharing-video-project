@@ -68,7 +68,7 @@ class VideoUserService {
 		let { id } = video;
 		id = Number(id);
 
-		// console.log(video);
+		console.log(video);
 
 		const dbVideo = await this.getById(id);
 
@@ -77,7 +77,7 @@ class VideoUserService {
 
 		const { like, isPublic } = dbVideo;
 
-		// console.log(dbVideo);
+		console.log(dbVideo);
 
 		if (likeAdd) {
 			const caculatedLike = Math.min(Math.max(like + likeAdd, -1), 1);

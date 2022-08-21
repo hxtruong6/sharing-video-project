@@ -3,7 +3,7 @@ import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { Divider } from "antd";
 import { Tag } from "antd";
-import { randomInt } from "../../utils/commonFuncs";
+import { checkLogged, randomInt } from "../../utils/commonFuncs";
 import styles from "./VideoCard.module.scss";
 import React from "react";
 import videoApi from "../../services/videoApi";
@@ -28,10 +28,11 @@ const placeHolderText =
   "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \
   when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
 
-function VideoCard({ video, isLogged }) {
+function VideoCard({ video }) {
   const { id, title, sharedUsers, like, dislike, description } = video;
 
   if (!id) return <></>;
+  const isLogged = checkLogged();
 
   const onLike = async () => {
     const res = await videoApi.update({ id, likeAdd: 1 });

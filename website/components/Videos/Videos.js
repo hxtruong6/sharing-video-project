@@ -1,5 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ApiStatus, NotifyType } from "../../utils/constants";
+import openNotification from "../../utils/notify";
+import videoApi from "../../services/videoApi";
+
 import VideoCard from "./VideoCard";
+import { Pagination } from "antd";
+import styles from "./Videos.module.scss";
 
 const vis = [
   {
@@ -37,13 +43,51 @@ const vis = [
 ];
 
 function Videos({ isLogged }) {
-  const videos = vis;
+  const [allPublic, setAllPublic] = useState(true);
+  const [videos, setVideos] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const [perPage, setCurrPage] = useState(3);
+
+  useEffect(() => {
+    const getAllPublicVideo = async () => {
+      const res = await videoApi.getAllPublic({ page, perPage });
+      const { status, data: resData } = res;
+
+      if (status === ApiStatus.Success) {
+        console.log("xxx 350 videos: ", resData);
+        setVideos(resData.videos);
+        setTotal(resData.total);
+      } else {
+        openNotification(
+          "Get all public video is error",
+          NotifyType.Error,
+          resData?.message
+        );
+      }
+    };
+
+    if (allPublic) {
+      getAllPublicVideo();
+    }
+  }, [allPublic, page]);
+
+  const onPaginationChange = (pagiPage, pagiPageSize) => {
+    setPage(pagiPage);
+  };
 
   return (
-    <div>
+    <div className={styles.videos}>
       {videos?.map((video) => (
         <VideoCard key={`vic-${video.id}`} video={video} isLogged={isLogged} />
       ))}
+      <Pagination
+        className={styles.videos__pagi}
+        current={page}
+        total={total}
+        pageSize={perPage}
+        onChange={onPaginationChange}
+      />
     </div>
   );
 }
