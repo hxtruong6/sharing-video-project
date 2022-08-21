@@ -1,18 +1,13 @@
-import { Col, Row } from "antd";
+import { Col, Row, Button, Divider, Tag } from "antd";
 import { LikeOutlined, DislikeOutlined } from "@ant-design/icons";
-import { Button } from "antd";
-import { Divider } from "antd";
-import { Tag } from "antd";
 import { getCurrentUser, randomInt } from "../../utils/commonFuncs";
 import styles from "./VideoCard.module.scss";
 import React, { useEffect, useState } from "react";
 import videoApi from "../../services/videoApi";
 import { ApiStatus, NotifyType } from "../../utils/constants";
 import openNotification from "../../utils/notify";
-import useSWR from "swr";
-import { mutate } from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import SWRKey from "../../utils/swrKey";
-import { useSWRConfig } from "swr";
 
 const colors = [
   "magenta",
@@ -52,8 +47,6 @@ const totalOfDislike = (video) =>
 
 function VideoCard({ video }) {
   const { id, title, sharedBy, description, url } = video;
-
-  if (!id) return <></>;
   const { mutate } = useSWRConfig();
 
   // const [refetch, setRefetch] = useState(false);
@@ -99,6 +92,8 @@ function VideoCard({ video }) {
     }
   };
 
+  if (!id) return <></>;
+
   return (
     <Row key={id} className={styles.VideoCard}>
       <Col span={8}>
@@ -106,7 +101,6 @@ function VideoCard({ video }) {
           src={`https://www.youtube.com/embed/${url?.split("v=").at(-1)}`}
           frameBorder="0"
           allow="autoplay; encrypted-media"
-          allowfullscreen
           title="video"
         />
       </Col>

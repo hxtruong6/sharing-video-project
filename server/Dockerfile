@@ -14,7 +14,7 @@ COPY . .
 # Install app dependencies
 RUN npm install
 RUN npm run build
-RUN npm run knex:migrate:latest
+# RUN npm run knex:migrate:latest
 
 # Stage 2
 FROM node:16-alpine
