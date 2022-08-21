@@ -5,10 +5,11 @@ import { Divider } from "antd";
 import { Tag } from "antd";
 import { checkLogged, randomInt } from "../../utils/commonFuncs";
 import styles from "./VideoCard.module.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import videoApi from "../../services/videoApi";
 import { ApiStatus, NotifyType } from "../../utils/constants";
 import openNotification from "../../utils/notify";
+import useSWR from "swr";
 
 const colors = [
   "magenta",
@@ -28,14 +29,42 @@ const placeHolderText =
   "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, \
   when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
 
+const LikeType = {
+  like: 1,
+  dislike: -1,
+};
+
+const findCurrSharedUser = (video, userId) =>
+  video?.sharedBy?.find((it) => it.userId === userId);
+
+const totalOfLike = (video) =>
+  video?.likeStatus?.find((it) => it.like === LikeType.like)?.total || 0;
+const totalOfDislike = (video) =>
+  video?.likeStatus?.find((it) => it.like === LikeType.dislike)?.total || 0;
+
 function VideoCard({ video }) {
-  const { id, title, sharedUsers, like, dislike, description } = video;
+  const { id, title, sharedBy, description } = video;
 
   if (!id) return <></>;
-  const isLogged = checkLogged();
+  console.log(video);
+
+  // const [isBelonged, setIsBelonged] = useState(false);
+  const [currSharedUser, setCurrSharedUser] = useState(undefined);
+
+  const { data: currUser } = useSWR("user", (key) => getCurrentUser());
+
+  useEffect(() => {
+    setCurrSharedUser(findCurrSharedUser(video, currUser.id));
+  }, [video]);
+
+  console.log("currSharedUser ", currSharedUser);
+  console.log("currUser: ", currUser);
 
   const onLike = async () => {
-    const res = await videoApi.update({ id, likeAdd: 1 });
+    const res = await videoApi.update({
+      id: currSharedUser.videoUserId,
+      likeAdd: 1,
+    });
     const { status, data: resData } = res;
 
     if (status === ApiStatus.Success) {
@@ -46,7 +75,10 @@ function VideoCard({ video }) {
   };
 
   const onDislike = async () => {
-    const res = await videoApi.update({ id, likeAdd: -1 });
+    const res = await videoApi.update({
+      id: currSharedUser.videoUserId,
+      likeAdd: -1,
+    });
     const { status, data: resData } = res;
 
     if (status === ApiStatus.Success) {
@@ -67,22 +99,27 @@ function VideoCard({ video }) {
             </div>
             <Row>
               Shared by:{"  "}
-              {sharedUsers?.map((it) => (
-                <Tag key={it.id} color={colors[randomInt(0, colors.length)]}>
-                  {it}
+              {sharedBy?.map((it) => (
+                <Tag
+                  key={it.userName}
+                  color={colors[randomInt(0, colors.length)]}
+                >
+                  {it.userName}
                 </Tag>
               ))}
             </Row>
             <Row>
               <div className={styles.VideoCard__like}>
-                {like} <LikeOutlined style={{ color: "#6E6EFF" }} />
+                {totalOfLike(video)}{" "}
+                <LikeOutlined style={{ color: "#6E6EFF" }} />
               </div>
               <div className={styles.VideoCard__like}>
-                {dislike} <DislikeOutlined style={{ color: "#FFB76E" }} />
+                {totalOfDislike(video)}{" "}
+                <DislikeOutlined style={{ color: "#FFB76E" }} />
               </div>
             </Row>
           </Col>
-          {isLogged && (
+          {currSharedUser && (
             <Row className={styles.VideoCard__likeAction}>
               <Button
                 size="large"

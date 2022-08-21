@@ -79,7 +79,7 @@ function Videos({ isLogged }) {
   return (
     <div className={styles.videos}>
       {videos?.map((video) => (
-        <VideoCard key={`vic-${video.id}`} video={video} isLogged={isLogged} />
+        <VideoCard key={`vic-${video.id}`} video={video} />
       ))}
       <Pagination
         className={styles.videos__pagi}

@@ -4,18 +4,14 @@ import utilStyles from "../styles/utils.module.css";
 import { getSortedPostsData } from "../lib/posts";
 import Videos from "../components/Videos/Videos";
 import useSWR from "swr";
+import { getCurrentUser } from "../utils/commonFuncs";
 
 export default function Home({ allPostsData }) {
   // const isLogged = checkLogged();
 
-  const { data: currUser } = useSWR(
-    "user",
-    (key) => {
-      const value = localStorage.getItem("user");
-      return !!value ? JSON.parse(value) : undefined;
-    },
-    { refreshInterval: 500 }
-  );
+  const { data: currUser } = useSWR("user", (key) => getCurrentUser(), {
+    refreshInterval: 500,
+  });
 
   // console.log(currUser);
 
