@@ -55,11 +55,21 @@ class VideoService {
 	}
 
 	async getAll(params: any = {}) {
-		const { page, perPage } = params;
+		const { page, perPage, userId } = params;
 		const { limit, offset } = processPagination(perPage, page);
 
 		const data = await db
 			.from(Tables.video)
+			.modify((queryBuilder: Knex.QueryBuilder<any, any>) => {
+				if (userId) {
+					queryBuilder.join(
+						`${Tables.videoUser}`,
+						`${Tables.video}.id`,
+						`${Tables.videoUser}.${VideoUserTable.videoId}`
+					);
+					queryBuilder.where(`${Tables.videoUser}.${VideoUserTable.userId}`, '=', userId);
+				}
+			})
 
 			.whereNull(`${Tables.video}.${VideoTable.deletedAt}`)
 			.limit(limit)

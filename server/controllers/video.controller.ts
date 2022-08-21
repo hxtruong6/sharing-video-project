@@ -27,11 +27,9 @@ class VideoController {
 	async getByUserId(req: Request, res: Response) {
 		try {
 			assertIRequest(req);
-			const data = await videoUserService.getByUserId(req.userId);
+			const { perPage, page } = req.body;
+			const data = await videoService.getAll({ perPage, page, userId: req.userId });
 
-			if (!data) {
-				return failRes(res, { message: ApiMessage.NOT_FOUND });
-			}
 			return successRes(res, convertCamelKeys(data));
 		} catch (error) {
 			return errorRes(res, error);

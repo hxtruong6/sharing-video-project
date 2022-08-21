@@ -6,7 +6,8 @@
 
 @id2 = 348f77de-af07-4dfc-b063-3a5c9e883e7f
 
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6ImFkbWluIiwiaWQiOjIsImlhdCI6MTY2MDkyNTkzNCwiZXhwIjoxNjYxMDEyMzM0fQ.b8VAzJo89iqQ3awsAYpPmLIDc3NIJBgB7KcHQe_RUYQ
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InZ1c2VyMDMiLCJpZCI6MTMsImlhdCI6MTY2MTA5OTIxNSwiZXhwIjoxNjYxMTg1NjE1fQ.jJSjrg6gY6wB1OC2vEBHeQWHu-w43wYN7SHWAZdoUGY
+
 ###
 # POST {{userUrl}}/register HTTP/1.1
 
@@ -14,8 +15,8 @@ POST {{userUrl}}/login HTTP/1.1
 content-type: application/json
 
 {
-    "userName": "admin",
-    "password": "admin"
+    "userName": "vuser03",
+    "password": "#Vuser03"
 }
 ###
 POST  {{baseUrl}}/public HTTP/1.1
@@ -23,7 +24,17 @@ content-type: application/json
 
 {
     "page": 1,
-    "perPage": 30
+    "perPage": 3
+}
+
+### WithAuthor
+POST  {{baseUrl}}/list HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "page": 1,
+    "perPage": 3
 }
 
 ###
