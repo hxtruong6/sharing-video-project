@@ -15,8 +15,8 @@ const createUnixSocketPoolConnection = () => ({
 });
 
 const createTcpPool = () => ({
-	host: '127.0.0.1', // e.g. '127.0.0.1'
-	port: 5432, // e.g. '5432'
+	host: '34.142.131.220', // e.g. '127.0.0.1'
+	port: '5432', // e.g. '5432'
 	user: 'postgres', // e.g. 'my-user'
 	password: 'postgres', // e.g. 'my-user-password'
 	database: 'sharing-video', // e.g. 'my-database'

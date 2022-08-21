@@ -81,6 +81,7 @@ function Videos({ isLogged }) {
           ? videoApi.getPrivateVideos({ page, perPage })
           : videoApi.getAllPublic({ page, perPage });
       const res = await query;
+      if (!res) return;
 
       const { status, data: resData } = res;
 
