@@ -5,7 +5,21 @@ import { convertCamelKeys, convertSnakeKeys } from '../utils/converts';
 
 class VideoService {
 	getById(id: number) {
-		return db.from(Tables.video).where({ id }).whereNull(VideoTable.deletedAt).first();
+		return db
+			.from(Tables.video)
+			.where({ id })
+			.whereNull(VideoTable.deletedAt)
+			.first()
+			.then((r: any) => convertCamelKeys(r));
+	}
+
+	getByUrl(url: string) {
+		return db
+			.from(Tables.video)
+			.where({ url })
+			.whereNull(VideoTable.deletedAt)
+			.first()
+			.then((r: any) => convertCamelKeys(r));
 	}
 
 	async getAll(params: any = {}) {
@@ -33,6 +47,10 @@ class VideoService {
 	}
 
 	async create(video: any, userId: number) {
+		const existedVideo = await this.getByUrl(video?.url);
+
+		if (existedVideo) return existedVideo;
+
 		const data = await db
 			.from(Tables.video)
 			.insert(convertSnakeKeys({ ...video, createdBy: userId }))
