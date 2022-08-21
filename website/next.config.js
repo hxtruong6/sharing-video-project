@@ -6,7 +6,7 @@ module.exports = {
   },
 
   env: {
-    BASE_URL: "https://server-fvpw4qxifq-as.a.run.app/api",
+    BASE_URL: "https://poll-fvpw4qxifq-as.a.run.app/api",
     // BASE_URL: "http://127.0.0.1:8084/api",
   },
 };

@@ -10,7 +10,12 @@ interface KnexConfig {
 const knexConfig: KnexConfig = {
 	development: {
 		client: 'pg',
-		connection: envConfig.ENVIRONMENT === Environment.DEVELOPMENT ? pqConnStr : createTcpPool(),
+		connection:
+			envConfig.ENVIRONMENT === Environment.DEVELOPMENT
+				? pqConnStr
+				: createUnixSocketPoolConnection(),
+		// connection: createUnixSocketPoolConnection(),
+
 		pool: {
 			min: 2,
 			max: 10,

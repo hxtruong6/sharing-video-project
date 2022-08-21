@@ -25,6 +25,8 @@ RUN npm install --only=production
 # copy all file form /app/build to path: ./
 COPY --from=builder /app/build ./
 
+# RUN npm run knex:migrate:latest
+
 EXPOSE 8080
 CMD node server.js
 
