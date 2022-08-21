@@ -66,7 +66,9 @@ function VideoCard({ video }) {
             <Row>
               Shared by:{"  "}
               {sharedUsers?.map((it) => (
-                <Tag color={colors[randomInt(0, colors.length)]}>{it}</Tag>
+                <Tag key={it.id} color={colors[randomInt(0, colors.length)]}>
+                  {it}
+                </Tag>
               ))}
             </Row>
             <Row>

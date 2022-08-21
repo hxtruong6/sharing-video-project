@@ -47,7 +47,7 @@ function Videos({ isLogged }) {
   const [videos, setVideos] = useState([]);
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
-  const [perPage, setCurrPage] = useState(3);
+  const [perPage, setPerPage] = useState(3);
 
   useEffect(() => {
     const getAllPublicVideo = async () => {
@@ -70,7 +70,7 @@ function Videos({ isLogged }) {
     if (allPublic) {
       getAllPublicVideo();
     }
-  }, [allPublic, page]);
+  }, [allPublic, page, perPage]);
 
   const onPaginationChange = (pagiPage, pagiPageSize) => {
     setPage(pagiPage);
