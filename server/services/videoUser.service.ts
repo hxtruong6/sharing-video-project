@@ -120,7 +120,11 @@ class VideoUserService {
 				`${Tables.videoUser}.${VideoUserTable.userId}`
 			)
 			.where(convertSnakeKeys({ videoId }))
-			.select(`${Tables.user}.id as user_id`, `${Tables.user}.user_name as user_name`)
+			.select(
+				`${Tables.videoUser}.id as video_user_id`,
+				`${Tables.user}.id as user_id`,
+				`${Tables.user}.user_name as user_name`
+			)
 			.then((r) => convertCamelKeys(r));
 
 		return data;

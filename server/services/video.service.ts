@@ -58,27 +58,9 @@ class VideoService {
 		const { page, perPage } = params;
 		const { limit, offset } = processPagination(perPage, page);
 
-		const withUserVideoJoin = `
-				join
-					(select
-						v1.id, vu1.id as video_user_id, vu1.user_id, u1.user_name
-					from
-						(${Tables.video} v1
-						join ${Tables.videoUser} vu1
-						on v1.id = vu1.video_id)
-
-						join "${Tables.user}" u1
-						on vu1.user_id = u1.id
-					where vu1.is_public = true
-					) video1
-				on ${Tables.video}.id = video1.id
-			`;
-
 		const data = await db
 			.from(Tables.video)
-			// .modify((queryBuilder: Knex.QueryBuilder<any, any>) => {
-			// 	queryBuilder.joinRaw(withUserVideoJoin);
-			// })
+
 			.whereNull(`${Tables.video}.${VideoTable.deletedAt}`)
 			.limit(limit)
 			.offset(offset)
@@ -90,12 +72,8 @@ class VideoService {
 			.select(db.raw(`count(${Tables.video}.id) OVER() as total`))
 			.then((r: any) => convertCamelKeys(r));
 
-		// console.log('xxx 300 data', data);
-
 		let videos = await handleTotalLike(data);
 		videos = await handleShareByUser(videos);
-
-		// console.log('xxx 301', videos);
 
 		return {
 			perPage,
