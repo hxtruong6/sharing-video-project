@@ -1,0 +1,17 @@
+.videos {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    height: 100%;
+    &__pagi {
+        margin: auto;
+        margin-top: auto;
+    }
+
+    &__switch {
+        margin: 12px;
+
+        justify-content: center;
+    }
+}

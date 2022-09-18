@@ -1,0 +1,77 @@
+@userUrl = http://localhost:8084/api/user
+
+@baseUrl = http://localhost:8084/api/video
+
+@id1 = 1
+
+@id2 = 348f77de-af07-4dfc-b063-3a5c9e883e7f
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyTmFtZSI6InZ1c2VyMDMiLCJpZCI6MTMsImlhdCI6MTY2MTA5OTIxNSwiZXhwIjoxNjYxMTg1NjE1fQ.jJSjrg6gY6wB1OC2vEBHeQWHu-w43wYN7SHWAZdoUGY
+
+###
+# POST {{userUrl}}/register HTTP/1.1
+
+POST {{userUrl}}/login HTTP/1.1
+content-type: application/json
+
+{
+    "userName": "vuser03",
+    "password": "#Vuser03"
+}
+###
+POST  {{baseUrl}}/public HTTP/1.1
+content-type: application/json
+
+{
+    "page": 1,
+    "perPage": 3
+}
+
+### WithAuthor
+POST  {{baseUrl}}/list HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "page": 1,
+    "perPage": 3
+}
+
+###
+POST {{baseUrl}} HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "name": "Be there {{$guid}}",
+    "url": "https://www.youtube.com/watch?v=b4eBeVC9i0I__TEST__{{$guid}}"
+}
+
+###
+GET {{baseUrl}}/list HTTP/1.1
+Authorization: Bearer {{token}}
+
+
+### Update like of Video
+PUT {{baseUrl}} HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": 6,
+    "likeAdd": -1
+}
+
+### Update status of Video
+PUT {{baseUrl}} HTTP/1.1
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "id": "{{id1}}",
+    "isPublic": true
+}
+
+### Get by playlistUrl
+GET {{baseUrl}}/public/admin HTTP/1.1
+content-type: application/json

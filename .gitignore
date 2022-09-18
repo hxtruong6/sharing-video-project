@@ -1,0 +1,5 @@
+**/package-local.json
+**/yarn.lock
+**/pnpm-lock.yaml
+server/server_build.zip
+server/server_public.zip
