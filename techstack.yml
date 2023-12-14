@@ -1,11 +1,11 @@
 repo_name: hxtruong6/sharing-video-project
-report_id: 57d9e875891fe948d1d8a1e37cad43f4
+report_id: 443adb3391d8cb8d82712bae883c1a19
 repo_type: Public
-timestamp: '2023-11-14T05:13:54+00:00'
+timestamp: '2023-12-14T10:37:21+00:00'
 requested_by: hxtruong6
 provider: github
 branch: master
-detected_tools_count: 60
+detected_tools_count: 61
 tools:
 - name: CSS 3
   description: The latest evolution of the Cascading Style Sheets language
@@ -57,7 +57,7 @@ tools:
   category: Libraries
   sub_category: JavaScript Framework Components
   image_url: https://img.stackshare.io/service/6112/12101536.png
-  detection_source_url: website/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package.json
   detection_source: website/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -72,7 +72,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Microframeworks (Backend)
   image_url: https://img.stackshare.io/service/1163/hashtag.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -85,7 +85,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/5936/nextjs.png
-  detection_source_url: website/package-lock.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package-lock.json
   detection_source: website/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -98,7 +98,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
-  detection_source: server/package.json
+  detection_source: server/Dockerfile
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
 - name: React
@@ -111,7 +111,19 @@ tools:
   category: Libraries
   sub_category: Javascript UI Libraries
   image_url: https://img.stackshare.io/service/1020/OYIaJ1KK.png
-  detection_source_url: website/package-lock.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package-lock.json
+  detection_source: website/package.json
+  last_updated_by: hxtruong
+  last_updated_on: 2022-09-18 02:54:21.000000000 Z
+- name: Sass
+  description: Syntactically Awesome Style Sheets
+  website_url: http://sass-lang.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: CSS Pre-processors / Extensions
+  image_url: https://img.stackshare.io/service/1171/jCR2zNJV.png
   detection_source: website/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -157,7 +169,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Code Review
   image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
-  detection_source: website/package.json
+  detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
 - name: Git
@@ -179,7 +191,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Javascript Testing Framework
   image_url: https://img.stackshare.io/service/830/jest.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -193,7 +205,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Javascript Testing Framework
   image_url: https://img.stackshare.io/no-img-open-source.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -217,7 +229,7 @@ tools:
   category: Libraries
   sub_category: Javascript Utilities & Libraries
   image_url: https://img.stackshare.io/service/2438/lodash.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -232,7 +244,7 @@ tools:
   category: Libraries
   sub_category: Javascript Utilities & Libraries
   image_url: https://img.stackshare.io/service/3643/Xrtdc94q_400x400.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -256,8 +268,8 @@ tools:
   category: Libraries
   sub_category: Javascript Utilities & Libraries
   image_url: https://img.stackshare.io/no-img-open-source.png
-  detection_source_url: server/package.json
-  detection_source: website/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
+  detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
 - name: chalk
@@ -291,7 +303,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16059/default_5fd43aeff4d6a935abc13737de01a0355210499d.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -305,7 +317,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16092/default_8725384794b44fe56f31da1d21ae759cf07be7a5.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -319,7 +331,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17290/default_b2015e9577d171c4c3f12c3c8d253c01fe63ba8d.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -333,7 +345,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16100/default_d947c1690e032a288145c7e2491999eab3ea8ede.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -347,7 +359,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -361,7 +373,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16959/default_caea01ce44a5fd1bb200d8fc0f8f2a1695b4e569.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -375,7 +387,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15945/default_54b691c123fc8979741e800e4dcd3936c0f3b246.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -389,7 +401,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -403,7 +415,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16805/default_31a4e0e11d348225088320f3a5c5ea6fa49c27ad.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -417,7 +429,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16257/default_ab17554b7e80af3d234b14168ed61e75d43f8eee.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -431,7 +443,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15982/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -445,8 +457,22 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15980/default_732016a20524708efe7a4c77497fe9bfeea19ba6.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
+  last_updated_by: hxtruong
+  last_updated_on: 2022-09-18 02:54:21.000000000 Z
+- name: antd
+  description: An enterprise-class UI design language and React components implementation
+  package_url: https://www.npmjs.com/antd
+  version: 4.22.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16201/default_b4f5b6f31c5ab1ffee4bacf20842cd41a8f2658d.png
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package.json
+  detection_source: website/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
 - name: bcrypt
@@ -459,7 +485,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16526/default_0a704f5fac0bffcf529c9a61658d0b9ddbf7504e.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -473,7 +499,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15906/default_7c39a83d4acd952df89b1ebfdb94c8646324fbf1.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -488,7 +514,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17583/default_661ab15cb9ea1663765f3e16ee70a1d2d50118d1.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -509,7 +535,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16165/default_41f04716a804e853d5c38a5b81ee0ea8a842ad82.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -523,7 +549,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15888/default_7c39a83d4acd952df89b1ebfdb94c8646324fbf1.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -537,7 +563,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15806/default_98aa227f51aa9d787815ec3fd98d0ab2bfebbb91.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -551,7 +577,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15996/default_7a88bebb451873cc63bd99007de5bd3bb8ef85de.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -565,7 +591,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15818/default_db4a7791d2f1174547374b9b587bc10fec088a5a.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -586,7 +612,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17906/default_e0b07170ab7d7ea66954ff35fdeaae5255c4c0aa.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -600,7 +626,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17773/default_2f87d5add351cc79d3471e48bc0dd6f92c1288ad.png
-  detection_source_url: website/package-lock.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package-lock.json
   detection_source: website/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -614,7 +640,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16155/default_77b54a203c743d16eddb6b6390cba17218454fa0.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -655,7 +681,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16491/default_fc6e1fc17e404d936593b5b901d67abb3386daa3.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -676,7 +702,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15847/default_4479dbac220be99e50e724b2df6cf415241d71fd.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -703,7 +729,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16421/default_23e0dabcd0197f0c1f0a41268f8ca3f7e8b1f1e2.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -717,7 +743,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17208/default_183829c5079b84333a720d8590a328efc043ba0e.png
-  detection_source_url: website/package-lock.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package-lock.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -731,7 +757,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16197/default_3d197518f6bb529bfcc1b685e2cefbdfe83ff108.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -746,7 +772,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/17805/default_2a0f136cfb588dd9053268b73a18a953e8d65590.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -760,7 +786,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15808/default_14fd11531839d935f920b6d55bd6f3528c890ad7.png
-  detection_source_url: website/package-lock.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package-lock.json
   detection_source: website/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -774,21 +800,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16952/default_caea01ce44a5fd1bb200d8fc0f8f2a1695b4e569.png
-  detection_source_url: website/package-lock.json
-  detection_source: website/package.json
-  last_updated_by: hxtruong
-  last_updated_on: 2022-09-18 02:54:21.000000000 Z
-- name: sass
-  description: A pure JavaScript implementation of Sass
-  package_url: https://www.npmjs.com/sass
-  version: 1.54.5
-  license: MIT
-  open_source: true
-  hosted_saas: false
-  category: Libraries
-  sub_category: npm Packages
-  image_url: https://img.stackshare.io/package/16057/default_5fd43aeff4d6a935abc13737de01a0355210499d.png
-  detection_source_url: website/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/website/package-lock.json
   detection_source: website/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -802,11 +814,17 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16806/default_31a4e0e11d348225088320f3a5c5ea6fa49c27ad.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
   vulnerabilities:
+  - name: sharp vulnerability in libwebp dependency CVE-2023-4863
+    cve_id: 
+    cve_url: https://github.com/advisories/GHSA-54xq-cgqr-rpm3
+    detected_date: Nov 17
+    severity: high
+    first_patched: 0.32.6
   - name: sharp vulnerable to Command Injection in post-installation over build environment
     cve_id: CVE-2022-29256
     cve_url: https://github.com/advisories/GHSA-gp95-ppv5-3jc5
@@ -823,7 +841,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/16969/default_caea01ce44a5fd1bb200d8fc0f8f2a1695b4e569.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -845,7 +863,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15864/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -859,7 +877,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15830/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
@@ -873,7 +891,7 @@ tools:
   category: Libraries
   sub_category: npm Packages
   image_url: https://img.stackshare.io/package/15916/default_e0a4fb1126d7400f419f0931cf1669947a5bc552.png
-  detection_source_url: server/package.json
+  detection_source_url: https://github.com/hxtruong6/sharing-video-project/blob/master/server/package.json
   detection_source: server/package.json
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
