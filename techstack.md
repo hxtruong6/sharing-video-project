@@ -1,12 +1,14 @@
 <!--
---- Readme.md Snippet without images Start ---
+&lt;--- Readme.md Snippet without images Start ---&gt;
 ## Tech Stack
 hxtruong6/sharing-video-project is built on the following main stack:
+
 - [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
 - [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
 - [React](https://reactjs.org/) – Javascript UI Libraries
 - [PostgreSQL](http://www.postgresql.org/) – Databases
 - [ExpressJS](http://expressjs.com/) – Microframeworks (Backend)
+- [Sass](http://sass-lang.com/) – CSS Pre-processors / Extensions
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
 - [TypeScript](http://www.typescriptlang.org) – Languages
 - [SQL](https://en.wikipedia.org/wiki/SQL) – Languages
@@ -22,16 +24,19 @@ hxtruong6/sharing-video-project is built on the following main stack:
 - [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet without images End ---
 
---- Readme.md Snippet with images Start ---
+&lt;--- Readme.md Snippet without images End ---&gt;
+
+&lt;--- Readme.md Snippet with images Start ---&gt;
 ## Tech Stack
 hxtruong6/sharing-video-project is built on the following main stack:
+
 - <img width='25' height='25' src='https://img.stackshare.io/service/830/jest.png' alt='Jest'/> [Jest](http://facebook.github.io/jest/) – Javascript Testing Framework
 - <img width='25' height='25' src='https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png' alt='Node.js'/> [Node.js](http://nodejs.org/) – Frameworks (Full Stack)
 - <img width='25' height='25' src='https://img.stackshare.io/service/1020/OYIaJ1KK.png' alt='React'/> [React](https://reactjs.org/) – Javascript UI Libraries
 - <img width='25' height='25' src='https://img.stackshare.io/service/1028/ASOhU5xJ.png' alt='PostgreSQL'/> [PostgreSQL](http://www.postgresql.org/) – Databases
 - <img width='25' height='25' src='https://img.stackshare.io/service/1163/hashtag.png' alt='ExpressJS'/> [ExpressJS](http://expressjs.com/) – Microframeworks (Backend)
+- <img width='25' height='25' src='https://img.stackshare.io/service/1171/jCR2zNJV.png' alt='Sass'/> [Sass](http://sass-lang.com/) – CSS Pre-processors / Extensions
 - <img width='25' height='25' src='https://img.stackshare.io/service/1209/javascript.jpeg' alt='JavaScript'/> [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) – Languages
 - <img width='25' height='25' src='https://img.stackshare.io/service/1612/bynNY5dJ.jpg' alt='TypeScript'/> [TypeScript](http://www.typescriptlang.org) – Languages
 - <img width='25' height='25' src='https://img.stackshare.io/service/2271/default_068d33483bba6b81ee13fbd4dc7aab9780896a54.png' alt='SQL'/> [SQL](https://en.wikipedia.org/wiki/SQL) – Languages
@@ -47,14 +52,15 @@ hxtruong6/sharing-video-project is built on the following main stack:
 - <img width='25' height='25' src='https://img.stackshare.io/service/586/n4u37v9t_400x400.png' alt='Docker'/> [Docker](https://www.docker.com/) – Virtual Machine Platforms & Containers
 
 Full tech stack [here](/techstack.md)
---- Readme.md Snippet with images End ---
+
+&lt;--- Readme.md Snippet with images End ---&gt;
 -->
 <div align="center">
 
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [hxtruong6/sharing-video-project](https://github.com/hxtruong6/sharing-video-project)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|60<br/>Tools used|11/14/23 <br/>Report generated|
+|61<br/>Tools used|12/14/23 <br/>Report generated|
 |------|------|
 </div>
 
@@ -95,7 +101,7 @@ Full tech stack [here](/techstack.md)
 </tr>
 </table>
 
-## <img src='https://img.stackshare.io/frameworks.svg'/> Frameworks (5)
+## <img src='https://img.stackshare.io/frameworks.svg'/> Frameworks (6)
 <table><tr>
   <td align='center'>
   <img width='36' height='36' src='https://img.stackshare.io/service/6112/12101536.png' alt='Ant Design'>
@@ -135,6 +141,14 @@ Full tech stack [here](/techstack.md)
   <sub><a href="https://reactjs.org/">React</a></sub>
   <br>
   <sub>v17.0.2</sub>
+</td>
+
+<td align='center'>
+  <img width='36' height='36' src='https://img.stackshare.io/service/1171/jCR2zNJV.png' alt='Sass'>
+  <br>
+  <sub><a href="http://sass-lang.com/">Sass</a></sub>
+  <br>
+  <sub></sub>
 </td>
 
 </tr>
@@ -286,6 +300,7 @@ Full tech stack [here](/techstack.md)
 |[@types/uuid](https://www.npmjs.com/@types/uuid)|v8.3.0|09/18/22|hxtruong |MIT|N/A|
 |[@typescript-eslint/eslint-plugin](https://www.npmjs.com/@typescript-eslint/eslint-plugin)|v4.21.0|09/18/22|hxtruong |MIT|N/A|
 |[@typescript-eslint/parser](https://www.npmjs.com/@typescript-eslint/parser)|v4.21.0|09/18/22|hxtruong |BSD-2-Clause|N/A|
+|[antd](https://www.npmjs.com/antd)|v4.22.6|09/18/22|hxtruong |MIT|N/A|
 |[bcrypt](https://www.npmjs.com/bcrypt)|v5.0.1|09/18/22|hxtruong |MIT|N/A|
 |[body-parser](https://www.npmjs.com/body-parser)|v1.19.0|09/18/22|hxtruong |MIT|N/A|
 |[class-validator](https://www.npmjs.com/class-validator)|v0.13.1|09/18/22|hxtruong |MIT|[CVE-2019-18413](https://github.com/advisories/GHSA-fj58-h2fr-3pp2) (Critical)|
@@ -305,8 +320,7 @@ Full tech stack [here](/techstack.md)
 |[pg-hstore](https://www.npmjs.com/pg-hstore)|v2.3.3|09/18/22|hxtruong |MIT|N/A|
 |[react-dom](https://www.npmjs.com/react-dom)|v17.0.2|09/18/22|hxtruong |MIT|N/A|
 |[remark](https://www.npmjs.com/remark)|v14.0.2|09/18/22|hxtruong |MIT|N/A|
-|[sass](https://www.npmjs.com/sass)|v1.54.5|09/18/22|hxtruong |MIT|N/A|
-|[sharp](https://www.npmjs.com/sharp)|v0.28.1|09/18/22|hxtruong |Apache-2.0|[CVE-2022-29256](https://github.com/advisories/GHSA-gp95-ppv5-3jc5) (Moderate)|
+|[sharp](https://www.npmjs.com/sharp)|v0.28.1|09/18/22|hxtruong |Apache-2.0|[](https://github.com/advisories/GHSA-54xq-cgqr-rpm3) (High)<br/>[CVE-2022-29256](https://github.com/advisories/GHSA-gp95-ppv5-3jc5) (Moderate)|
 |[ssh2](https://www.npmjs.com/ssh2)|v0.8.9|09/18/22|hxtruong |MIT|[CVE-2020-26301](https://github.com/advisories/GHSA-652h-xwhf-q4h6) (High)|
 |[ts-jest](https://www.npmjs.com/ts-jest)|v26.5.4|09/18/22|hxtruong |MIT|N/A|
 |[ts-node](https://www.npmjs.com/ts-node)|v10.8.0|09/18/22|hxtruong |MIT|N/A|
@@ -315,4 +329,4 @@ Full tech stack [here](/techstack.md)
 <br/>
 <div align='center'>
 
-Generated via [Stack File](https://github.com/apps/stack-file)
+Generated via [Stack File](https://github.com/marketplace/stack-file)
