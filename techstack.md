@@ -60,7 +60,7 @@ Full tech stack [here](/techstack.md)
 # Tech Stack File
 ![](https://img.stackshare.io/repo.svg "repo") [hxtruong6/sharing-video-project](https://github.com/hxtruong6/sharing-video-project)![](https://img.stackshare.io/public_badge.svg "public")
 <br/><br/>
-|61<br/>Tools used|12/14/23 <br/>Report generated|
+|62<br/>Tools used|01/05/24 <br/>Report generated|
 |------|------|
 </div>
 
@@ -282,9 +282,9 @@ Full tech stack [here](/techstack.md)
 </table>
 
 
-## <img src='https://img.stackshare.io/group.svg' /> Open source packages (37)</h2>
+## <img src='https://img.stackshare.io/group.svg' /> Open source packages (38)</h2>
 
-## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (37)
+## <img width='24' height='24' src='https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png'/> npm (38)
 
 |NAME|VERSION|LAST UPDATED|LAST UPDATED BY|LICENSE|VULNERABILITIES|
 |:------|:------|:------|:------|:------|:------|
@@ -303,6 +303,7 @@ Full tech stack [here](/techstack.md)
 |[antd](https://www.npmjs.com/antd)|v4.22.6|09/18/22|hxtruong |MIT|N/A|
 |[bcrypt](https://www.npmjs.com/bcrypt)|v5.0.1|09/18/22|hxtruong |MIT|N/A|
 |[body-parser](https://www.npmjs.com/body-parser)|v1.19.0|09/18/22|hxtruong |MIT|N/A|
+|[chalk](https://www.npmjs.com/chalk)|v4.1.0|09/18/22|hxtruong |MIT|N/A|
 |[class-validator](https://www.npmjs.com/class-validator)|v0.13.1|09/18/22|hxtruong |MIT|[CVE-2019-18413](https://github.com/advisories/GHSA-fj58-h2fr-3pp2) (Critical)|
 |[cors](https://www.npmjs.com/cors)|v2.8.5|09/18/22|hxtruong |MIT|N/A|
 |[eslint-config-airbnb-base](https://www.npmjs.com/eslint-config-airbnb-base)|v14.2.1|09/18/22|hxtruong |MIT|N/A|
