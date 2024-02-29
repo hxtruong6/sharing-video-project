@@ -2,7 +2,7 @@ repo_name: hxtruong6/sharing-video-project
 report_id: 57d9e875891fe948d1d8a1e37cad43f4
 version: 0.1
 repo_type: Public
-timestamp: '2024-01-05T08:45:31+00:00'
+timestamp: '2024-02-29T18:44:13+00:00'
 requested_by: hxtruong6
 provider: github
 branch: master
@@ -82,7 +82,7 @@ tools:
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
 - name: Next.js
-  description: 'A small framework for server-rendered universal JavaScript apps '
+  description: A small framework for server-rendered universal JavaScript apps
   website_url: https://nextjs.org/
   version: 12.2.5
   open_source: true
@@ -208,7 +208,7 @@ tools:
   last_updated_by: hxtruong
   last_updated_on: 2022-09-18 02:54:21.000000000 Z
 - name: SuperTest
-  description: 'A library for testing node.js HTTP servers '
+  description: A library for testing node.js HTTP servers
   website_url: https://www.npmjs.com/package/supertest
   version: 6.1.3
   license: MIT
